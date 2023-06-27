@@ -53,8 +53,11 @@
       height: 100%;
       width: 100%;
       background: #e0dfdf;
-      filter: blur(20px);
+      filter: blur(10px);
       transition: opacity 0.25s ease-out;
+      @media screen and (min-width: 992px) {
+        filter: blur(20px);
+      }
     }
   }
 }
