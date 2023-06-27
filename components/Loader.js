@@ -31,26 +31,24 @@ function Loader() {
       duration: 1,
     });
 
-    for (let i = 0; i < logoPathRefLength; i++) {
-      gsap.set(logoPathRef.current[i], {
-        yPercent: 130,
-        rotation: 0,
-      });
-    }
+    gsap.set(logoPathRef.current, {
+      yPercent: 130,
+      rotation: 0,
+    });
 
-    for (let i = 0; i < logoPathRefLength; i++) {
-      tl.to(logoPathRef.current[i], {
-        yPercent: 0,
-        rotation: 0,
-        duration: 0.3,
-        ease: [0.22, 1, 0.36, 1],
-      });
-    }
+    gsap.to(logoPathRef.current, {
+      yPercent: 0,
+      rotation: 0,
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+      stagger: 0.2,
+      delay: 0.5,
+    });
 
     tl.to(overlayRef.current, {
       yPercent: 0,
       rotation: 0,
-      delay: 0.5,
+      delay: 1.8,
     });
 
     tl.to(
@@ -62,7 +60,7 @@ function Loader() {
         scaleX: 1,
       },
 
-      "-=0.3"
+      "-=0.1"
     );
   }, []);
 
