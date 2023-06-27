@@ -41,7 +41,7 @@ function Loader() {
       rotation: 0,
       duration: 0.4,
       ease: [0.22, 1, 0.36, 1],
-      stagger: 0.2,
+      stagger: 0.15,
       delay: 0.5,
     });
 
