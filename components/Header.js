@@ -36,7 +36,7 @@ function Header() {
         <path
           d="M17.5478 0.242188V15.8397M35 18.7539H20.2113M17.5478 21.5588V37.1562M14.7887 18.7539H0"
           stroke="white"
-          stroke-width="3"
+          strokeWidth="3"
         />
       </svg>
     </header>

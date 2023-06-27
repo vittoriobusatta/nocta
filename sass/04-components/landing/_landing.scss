@@ -22,16 +22,16 @@
     align-items: center;
     flex-direction: column;
     @media screen and (min-width: 1224px) {
-      max-width: 650px;
+      max-width: 600px;
     }
     &__image {
       position: relative;
       overflow: hidden;
       &--animateComplete {
         overflow: initial;
-        & .landing__card__blur {
+        // & .landing__card__blur {
         //   opacity: 1;
-        }
+        // }
       }
       & img {
         position: relative;
