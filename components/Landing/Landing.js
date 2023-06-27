@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import landingCard from "../../public/images/1_bg.jpg";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
