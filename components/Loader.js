@@ -48,7 +48,7 @@ function Loader() {
     tl.to(overlayRef.current, {
       yPercent: 0,
       rotation: 0,
-      delay: 1.8,
+      delay: 1.5,
     });
 
     tl.to(
