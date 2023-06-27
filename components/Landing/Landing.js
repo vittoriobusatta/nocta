@@ -16,7 +16,7 @@ function Landing() {
         duration: 1,
         ease: "power3.inOut",
       },
-      delay: 1.90,
+      delay: 1.95,
     });
 
     gsap.set([item], {
