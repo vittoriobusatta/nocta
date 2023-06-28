@@ -29,65 +29,81 @@ function About() {
 
           <div className="div2">
             <Image
-              src={aboutImage2}
-              alt="About image 2"
+              src={aboutImage1}
+              alt="About image 1"
               width={500}
               height={500}
-              priority
+              className="div2__left"
             />
-            <p>
-              “I wanted to take a piece of that culture that I grew up with,
-              that school of thought, and bring the best to it. With Nocta, we
-              were trying to make the hardest jacket, the hardest tracksuit, the
-              hardest gloves. Just the best of that world.” <span>- DRAKE</span>
-            </p>
-          </div>
 
+            <div className="div2__right">
+              <Image
+                src={aboutImage2}
+                alt="About image 2"
+                width={500}
+                height={500}
+              />
+              <p className="div2__text paragraph">
+                “I wanted to take a piece of that culture that I grew up with,
+                that school of thought, and bring the best to it. With Nocta, we
+                were trying to make the hardest jacket, the hardest tracksuit,
+                the hardest gloves. Just the best of that world.” - DRAKE
+              </p>
+            </div>
+          </div>
+          <p className="div5 paragraph">
+            “I wanted to take a piece of that culture that I grew up with, that
+            school of thought, and bring the best to it. With Nocta, we were
+            trying to make the hardest jacket, the hardest tracksuit, the
+            hardest gloves. Just the best of that world.” - DRAKE
+          </p>
           <div className="div3">
+            <div className="div3__bar" />
+          </div>
+          <div className="div4">
             <div>
-              <p className="div3__description">
+              <p className="div4__description paragraph">
                 NOCTA, a collection for the collective, has arrived. The form
                 fitting apparel nods to sport, but is rooted and inspired by
                 those who roam the streets, who are on the go and want
                 functional, comfortable and elevated every essentials.
               </p>
-              <Link href="/" className="div3__content">
-                  <p>
-                    More <span>about us</span>
-                  </p>
-                  <svg
-                    width="34"
-                    height="11"
-                    viewBox="0 0 34 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="Group 88">
-                      <path
-                        id="Vector"
-                        d="M23.7757 5.49973L21.707 10.3696L33.2508 5.49973L21.707 0.630592L23.7757 5.49973Z"
-                        fill="#505050"
-                      />
-                      <path
-                        id="Vector_2"
-                        d="M0.75 5.5L28.7899 5.5"
-                        stroke="#505050"
-                        strokeWidth="1.20972"
-                        strokeMiterlimit="10"
-                      />
-                    </g>
-                  </svg>
+              <Link href="/" className="div4__content">
+                <p>
+                  More <span>about us</span>
+                </p>
+                <svg
+                  width="34"
+                  height="11"
+                  viewBox="0 0 34 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="Group 88">
+                    <path
+                      id="Vector"
+                      d="M23.7757 5.49973L21.707 10.3696L33.2508 5.49973L21.707 0.630592L23.7757 5.49973Z"
+                      fill="#505050"
+                    />
+                    <path
+                      id="Vector_2"
+                      d="M0.75 5.5L28.7899 5.5"
+                      stroke="#505050"
+                      strokeWidth="1.20972"
+                      strokeMiterlimit="10"
+                    />
+                  </g>
+                </svg>
               </Link>
             </div>
             <Image
               src={aboutImage3}
               alt="About image 3"
-              width={500}
-              height={500}
+              width={700}
+              height={700}
               priority
             />
           </div>
-          <div className="div4" />
         </div>
       </div>
     </section>
