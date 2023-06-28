@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import aboutImage1 from "public/assets/a_01.jpg";
-import aboutImage2 from "public/assets/a_02.jpg";
-import aboutImage3 from "public/assets/a_03.jpg";
-import arrow from "public/share/arrow.svg";
+import aboutImage1 from "public/assets/a_01.webp";
+import aboutImage2 from "public/assets/a_02.webp";
+import aboutImage3 from "public/assets/a_03.webp";
 import Link from "next/link";
 
 function About() {
@@ -73,8 +72,8 @@ function About() {
                         id="Vector_2"
                         d="M0.75 5.5L28.7899 5.5"
                         stroke="#505050"
-                        stroke-width="1.20972"
-                        stroke-miterlimit="10"
+                        strokeWidth="1.20972"
+                        strokeMiterlimit="10"
                       />
                     </g>
                   </svg>
