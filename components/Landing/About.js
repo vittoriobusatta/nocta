@@ -12,8 +12,8 @@ function About() {
         <div className="about__title">
           <h2>About us</h2>
           <h1>
-            <span>A collection for the</span>
-            <span>collective</span>
+            <span>A collection for</span>
+            <span>the collective</span>
           </h1>
         </div>
         <div className="about__content">
