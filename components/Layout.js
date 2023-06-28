@@ -6,7 +6,7 @@ import Loader from "./Loader";
 function Layout({ children }) {
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
       <Header />
       <main>{children}</main>
       {/* <Footer /> */}

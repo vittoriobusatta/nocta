@@ -27,22 +27,22 @@
     &__image {
       position: relative;
       overflow: hidden;
-      &--animateComplete {
-        overflow: initial;
-        & .landing__card__blur {
-          opacity: 1;
-          animation: move 2s ease-in-out infinite;
-          @media screen and (min-width: 992px) {
-            animation: moveDesktop 2s ease-in-out infinite;
-          }
-        }
-      }
       & img {
         position: relative;
         z-index: 2;
         width: 75vw;
         @media screen and (min-width: 576px) {
           width: 60vw;
+        }
+      }
+      &--animateComplete {
+        overflow: initial;
+        & .landing__card__blur {
+          opacity: 1;
+          animation: moveMobile 2s ease-in-out infinite;
+          @media screen and (min-width: 992px) {
+            animation: moveDesktop 2s ease-in-out infinite;
+          }
         }
       }
     }
@@ -65,7 +65,7 @@
 $moveMobile: 8px;
 $moveDesktop: 20px;
 
-@keyframes move {
+@keyframes moveMobile {
   0% {
     transform: translateY(0);
   }

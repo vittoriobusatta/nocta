@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Landing from "@/components/Landing/Landing";
+import About from "@/components/Landing/About";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
         <meta property="og:url" content="https://www.example.com" />
       </Head>
       <Landing />
+      <About />
     </>
   );
 }

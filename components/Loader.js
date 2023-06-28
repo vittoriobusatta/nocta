@@ -7,8 +7,6 @@ function Loader() {
   const overlayRef = useRef(null);
 
   useEffect(() => {
-    const logoPathRefLength = logoPathRef.current.length;
-
     const tl = gsap.timeline({
       defaults: {
         ease: "power3.inOut",
