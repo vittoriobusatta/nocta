@@ -3,6 +3,7 @@ import "../sass/styles.scss";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import Lenis from "@studio-freight/lenis";
+import { AppProvider } from "context";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -34,11 +35,14 @@ function MyApp({ Component, pageProps }) {
 
     requestAnimationFrame(raf);
   }
+
   return (
     <>
-      <Layout>
-        <Component {...pageProps} key={router.asPath} />
-      </Layout>
+      <AppProvider>
+        <Layout>
+          <Component {...pageProps} key={router.asPath} />
+        </Layout>
+      </AppProvider>
     </>
   );
 }

@@ -20,7 +20,6 @@
 @supports (padding: env(safe-area-inset-top)) {
   body {
     font-size: 1.6rem;
-    background-color: rgb(154, 154, 154);
   }
 }
 
@@ -28,6 +27,7 @@ html {
   font-size: 62.5%;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overflow: hidden;
   @media screen and (max-width: 1400px) {
     font-size: 58%;
   }
@@ -66,4 +66,40 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+.slide-in {
+  position: fixed;
+  min-height: -webkit-fill-available;
+  height: calc(100% + env(safe-area-inset-top));
+  inset: 0;
+  background-color: #29241f;
+  width: 100%;
+  transform-origin: bottom;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & svg {
+    height: 80px;
+    width: auto;
+  }
+}
+
+.slide-out {
+  position: fixed;
+  min-height: -webkit-fill-available;
+  height: calc(100% + env(safe-area-inset-top));
+  inset: 0;
+  background-color: #29241f;
+  width: 100%;
+  transform-origin: top;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & svg {
+    height: 80px;
+    width: auto;
+  }
 }

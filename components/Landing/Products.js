@@ -8,7 +8,6 @@ function Products() {
       .then((resdata) => setData(resdata))
       .catch((error) => console.log(error));
   }, []);
-  console.log(data);
   return (
     <section className="products">
       <div className="products__content">

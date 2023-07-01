@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { closeSlider, showSlider } from "./sliderUtils";
+import { AppContext } from "context";
+import Transition from "utils/transitions";
 
 function Showcase() {
   const [data, setData] = useState([]);
@@ -8,11 +10,15 @@ function Showcase() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderOpen, setSliderOpen] = useState(false);
 
+  const { setHeaderColor } = useContext(AppContext);
+
   useEffect(() => {
     fetch("/products.json")
       .then((response) => response.json())
       .then((resdata) => setData(resdata))
       .catch((error) => console.log(error));
+
+    setHeaderColor("#111");
   }, []);
 
   const introGridRef = useRef(null);
@@ -65,26 +71,26 @@ function Showcase() {
           );
         })}
       </section>
-      {/* <div class="intro-title">
-        <h2 class="intro-title__main oh">
-          <span class="oh__inner">Nale Aby</span>
+      {/* <div className="intro-title">
+        <h2 className="intro-title__main oh">
+          <span className="oh__inner">Nale Aby</span>
         </h2>
-        <span class="intro-title__sub oh">
-          <span class="oh__inner">Prompt Fashion</span>
+        <span className="intro-title__sub oh">
+          <span className="oh__inner">Prompt Fashion</span>
         </span>
       </div>
-      <div class="slider-title">
-        <h3 class="slider-title__main oh">
-          <span class="oh__inner">Collection</span>
+      <div className="slider-title">
+        <h3 className="slider-title__main oh">
+          <span className="oh__inner">Collection</span>
         </h3>
-        <p class="slider-title__desc">
+        <p className="slider-title__desc">
           The collection is a celebration of beauty, sustainability, and ethical
           production.
         </p>
       </div> */}
-      <div class="controls" ref={controlsRef}>
+      <div className="controls" ref={controlsRef}>
         <button
-          class="unbutton close"
+          className="unbutton close"
           onClick={() => {
             closeSlider(
               currentSlide,
@@ -106,4 +112,4 @@ function Showcase() {
   );
 }
 
-export default Showcase;
+export default Transition(Showcase);
