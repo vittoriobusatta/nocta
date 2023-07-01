@@ -3,7 +3,7 @@
   height: 80vw;
   inset: 0;
   overflow: hidden;
-  margin-bottom: 50vh;
+  margin-bottom: 200vh;
 }
 
 .columns {
@@ -25,6 +25,7 @@
 //   padding: 5vh 0 15vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 
 .column {

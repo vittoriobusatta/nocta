@@ -59,26 +59,53 @@ const images = [
 export default function Gallery() {
   const sectionsRef = useRef(null);
   const columnsRef = useRef([]);
+  const columnsInnerRef = useRef([]);
 
   useEffect(() => {
     const sections = sectionsRef.current;
     const columns = columnsRef.current;
+    const columnsInner = columnsInnerRef.current;
 
-    const anim = gsap.to(columns, {
-      scrollTrigger: {
-        trigger: sections,
-        scrub: true,
-        start: "top center",
-        end: "bottom 85%",
-      },
-      duration: 5,
-      stagger: 1,
-      yPercent: (pos) => (pos % 2 ? 3 : -3),
-    });
-    return () => {
-      anim.kill();
+    const scroll = () => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: sections,
+            scrub: true,
+            start: "top bottom",
+            end: "bottom top",
+          },
+        })
+        .addLabel("start", 0)
+        .to(
+          columns,
+          {
+            ease: "none",
+            yPercent: (pos) => (pos % 2 ? 3 : -3),
+          },
+          "start"
+        )
+        .to(
+          columnsInner,
+          {
+            ease: "none",
+            startAt: { scale: 1.2 },
+            scale: 1,
+          },
+          "start"
+        )
+        // .to(
+        //   columnsInnerRef.current[1],
+        //   {
+        //     ease: "none",
+        //     y: (pos) => (pos % 2 ? 50 : -50),
+        //   },
+        //   "start"
+        // );
     };
+    scroll();
   }, []);
+
   return (
     <section ref={sectionsRef} className="section section--columns">
       <div className="columns">
@@ -88,7 +115,10 @@ export default function Gallery() {
             ref={(el) => (columnsRef.current[index] = el)}
             className="column-wrap"
           >
-            <div className="column">
+            <div
+              className="column"
+              ref={(el) => (columnsInnerRef.current[index] = el)}
+            >
               {image.map((img) => (
                 <div key={img.id} className="column__item">
                   <Image
