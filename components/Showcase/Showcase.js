@@ -3,6 +3,15 @@ import { closeSlider, showSlider } from "./sliderUtils";
 import { AppContext } from "context";
 import Transition from "utils/transitions";
 
+function shuffleArrayOnce(array) {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
+
 function Showcase() {
   const [data, setData] = useState([]);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -15,7 +24,9 @@ function Showcase() {
   useEffect(() => {
     fetch("/products.json")
       .then((response) => response.json())
-      .then((resdata) => setData(resdata))
+      .then((resdata) => setData(
+        shuffleArrayOnce(resdata)
+      ))
       .catch((error) => console.log(error));
 
     setHeaderColor("#111");
