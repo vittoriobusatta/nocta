@@ -39,19 +39,22 @@
       background-color: #b8b8b820;
     }
     &__image {
-      min-height: 20vw;
+      min-height: 60vw;
       width: 100%;
       height: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
+      @media screen and (min-width: 576px) {
+        min-height: 20vw;
+      }
     }
     &__details {
       width: 100%;
       display: inline-flex;
       justify-content: space-between;
       align-items: center;
-      padding: .8vw 0;
+      padding: 0.8vw 0;
       & h3 {
         color: #767676;
         font-size: min(1.3vw, 20px);
@@ -72,5 +75,6 @@
     flex-direction: row;
     column-gap: 1.5vw;
     width: 100%;
+    // flex-wrap: wrap;
   }
 }

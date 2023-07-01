@@ -1,9 +1,9 @@
 ::-moz-selection {
-  background-color: #B8B8B8;
+  background-color: #b8b8b8;
   text-shadow: none;
 }
 ::selection {
-  background-color: #B8B8B8;
+  background-color: #b8b8b8;
   text-shadow: none;
 }
 
@@ -20,6 +20,7 @@
 @supports (padding: env(safe-area-inset-top)) {
   body {
     font-size: 1.6rem;
+    background-color: rgb(154, 154, 154);
   }
 }
 
@@ -47,11 +48,6 @@ html {
   }
 }
 
-// main {
-//   margin-top: 60px;
-//   min-height: calc(100vh - 86px);
-// }
-
 html.lenis {
   height: auto;
 }
@@ -69,5 +65,5 @@ html.lenis {
 }
 
 .lenis.lenis-scrolling iframe {
-   pointer-events: none;
-} 
+  pointer-events: none;
+}
