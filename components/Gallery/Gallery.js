@@ -125,8 +125,8 @@ export default function Gallery() {
                     className="column__item-img"
                     src={img.src}
                     alt={img.alt}
-                    width={700}
-                    height={700}
+                    width={900}
+                    height={900}
                     priority
                   />
                 </div>

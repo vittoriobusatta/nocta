@@ -3,6 +3,7 @@ import Head from "next/head";
 import Landing from "@/components/Landing/Landing";
 import About from "@/components/Landing/About";
 import Gallery from "@/components/Gallery/Gallery.js";
+import Products from "@/components/Landing/Products";
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
       </Head>
       <Landing />
       <About />
+      <Products />
       <Gallery />
     </>
   );
