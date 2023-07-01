@@ -25,7 +25,6 @@
 
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
   @media screen and (max-width: 1400px) {
@@ -52,3 +51,23 @@ html {
 //   margin-top: 60px;
 //   min-height: calc(100vh - 86px);
 // }
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+   pointer-events: none;
+} 

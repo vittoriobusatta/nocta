@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Landing from "@/components/Landing/Landing";
 import About from "@/components/Landing/About";
+import Gallery from "@/components/Gallery/Gallery.js";
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
       </Head>
       <Landing />
       <About />
+      <Gallery />
     </>
   );
 }
