@@ -78,13 +78,11 @@ export const closeSlider = (
   setMode,
   setIsAnimating,
   isAnimating,
-  setSliderOpen,
   controlsRef
 ) => {
   if (isAnimating || mode === "grid") return;
   setMode("grid");
   setIsAnimating(true);
-  setSliderOpen(false);
 
   const controls = controlsRef.current;
 

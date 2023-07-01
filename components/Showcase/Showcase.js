@@ -111,7 +111,6 @@ function Showcase() {
               setMode,
               setIsAnimating,
               isAnimating,
-              setSliderOpen,
               controlsRef
             );
           }}

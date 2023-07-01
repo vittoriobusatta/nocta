@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function Products() {
@@ -15,6 +16,7 @@ function Products() {
           <h1>All Products</h1>
           <h5>{data.length}</h5>
         </div>
+        <Link href="/products">View All</Link>
         <div className="products__list">
           {data.slice(0, 4).map((item) => {
             const { id, name, src } = item;
