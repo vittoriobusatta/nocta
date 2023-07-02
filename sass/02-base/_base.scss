@@ -1,21 +1,21 @@
 ::-moz-selection {
-  background-color: #b8b8b8;
+  background-color: $color1;
   text-shadow: none;
 }
 ::selection {
-  background-color: #b8b8b8;
+  background-color: $color1;
   text-shadow: none;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  background-color: #faf7ee;
-}
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   background-color: #faf7ee;
+// }
 
-::-webkit-scrollbar-thumb {
-  background: #e1d2c1;
-  border-radius: 15px;
-}
+// ::-webkit-scrollbar-thumb {
+//   background: #e1d2c1;
+//   border-radius: 15px;
+// }
 
 @supports (padding: env(safe-area-inset-top)) {
   body {
@@ -24,48 +24,9 @@
 }
 
 html {
-  font-size: 62.5%;
   -ms-overflow-style: none;
   scrollbar-width: none;
   overflow: hidden;
-  @media screen and (max-width: 1400px) {
-    font-size: 58%;
-  }
-  @media screen and (max-width: 1224px) {
-    font-size: 52%;
-  }
-  @media screen and (max-width: 992px) {
-    font-size: 46%;
-  }
-  @media screen and (max-width: 768px) {
-    font-size: 40%;
-  }
-  @media screen and (max-width: 576px) {
-    font-size: 34%;
-  }
-  @media screen and (max-width: 321px) {
-    font-size: 28%;
-  }
-}
-
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
 }
 
 .slide-in {
@@ -73,7 +34,7 @@ html.lenis {
   min-height: -webkit-fill-available;
   height: calc(100% + env(safe-area-inset-top));
   inset: 0;
-  background-color: #29241f;
+  background-color: $background;
   width: 100%;
   transform-origin: bottom;
   z-index: 999;
@@ -91,7 +52,7 @@ html.lenis {
   min-height: -webkit-fill-available;
   height: calc(100% + env(safe-area-inset-top));
   inset: 0;
-  background-color: #29241f;
+  background-color: $background;
   width: 100%;
   transform-origin: top;
   z-index: 999;

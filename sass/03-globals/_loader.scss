@@ -2,20 +2,18 @@
   height: calc(100% + env(safe-area-inset-top));
   min-height: -webkit-fill-available;
   width: 100%;
-  background-color: #dbd8d8;
   position: fixed;
+  @include fja_center;
   inset: 0;
   z-index: 30;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: $color1;
   &__logo {
     overflow: hidden;
   }
   &__overlay {
     position: absolute;
     inset: 0;
-    background-color: #29241f;
+    background-color: $background;
     z-index: 1;
     transform-origin: top;
   }

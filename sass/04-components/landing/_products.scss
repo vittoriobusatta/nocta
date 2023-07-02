@@ -1,47 +1,27 @@
 .products {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include fja_center;
   &__content {
     min-height: 20vh;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include full_hw;
+    @include fja_center;
     flex-direction: column;
-    padding: 88px 26px;
-    @media screen and (min-width: 576px) {
-      padding: 88px 32px;
-    }
-    @media screen and (min-width: 768px) {
-      padding: 88px 42px;
-    }
+    padding: $MblPadding $minGap;
     @media screen and (min-width: 992px) {
-      padding: 144px 52px;
-      row-gap: 144px;
-    }
-    @media screen and (min-width: 1224px) {
-      padding: 144px 62px;
+      padding: $DskPadding $minGap;
+      row-gap: $DskPadding;
     }
   }
   &__item {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include full_hw;
+    @include fja_center;
     flex-direction: column;
     &__content {
-      height: 100%;
-      width: 100%;
+      @include full_hw;
       padding: 26px;
-      background-color: #b8b8b820;
+      background-color: $placeholderColor;
     }
     &__image {
       min-height: 60vw;
-      width: 100%;
-      height: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -69,9 +49,7 @@
     }
   }
   &__list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include fja_center;
     flex-direction: row;
     column-gap: 1.5vw;
     width: 100%;

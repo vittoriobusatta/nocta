@@ -1,50 +1,48 @@
-.section--columns {
+.gallery {
   width: 100%;
   height: 80vw;
   inset: 0;
   overflow: hidden;
-  margin-top: 144px;
-}
-
-.columns {
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2.5vw;
-  height: 100%;
-  will-change: transform, opacity;
-  align-items: center;
-  display: flex;
-  position: relative;
-}
-
-.column-wrap {
-  z-index: 1;
-  will-change: transform;
-  flex-direction: column;
-//   padding: 5vh 0 15vh;
-  display: flex;
-  position: relative;
-  overflow: hidden;
-}
-
-.column {
-  will-change: transform;
-  display: block;
-  position: relative;
-}
-
-.column__item {
-  width: 32vw;
-  height: calc(32vw * 1.3);
-  margin: 0 0 2.5vw 0;
-  z-index: 1;
-  will-change: transform, filter;
-  position: relative;
-  overflow: hidden;
-  & img {
+  margin-top: $MblPadding;
+  @media screen and (min-width: 992px) {
+    margin-top: $DskPadding;
+  }
+  &__columns {
     width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5vw;
     height: 100%;
-    object-fit: cover;
+    will-change: transform;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+  &__wrap {
+    z-index: 1;
+    will-change: transform;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    &__column {
+      will-change: transform;
+      display: block;
+      position: relative;
+    }
+  }
+  &__item {
+    width: 32vw;
+    height: calc(32vw * 1.3);
+    margin: 0 0 2.5vw 0;
+    z-index: 1;
+    will-change: transform, filter;
+    position: relative;
+    overflow: hidden;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

@@ -12,7 +12,7 @@ function Products() {
   return (
     <section className="products">
       <div className="products__content">
-        <div className="about__title">
+        <div className="products__title">
           <h1>All Products</h1>
           <h5>{data.length}</h5>
         </div>

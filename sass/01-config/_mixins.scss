@@ -1,0 +1,24 @@
+@mixin title_properties {
+  color: $titleColor;
+  font-family: $tuskerGrotesk;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@mixin paragraph_properties {
+  color: $textColor;
+  font-family: $manrope;
+  font-size: clamp(16px, 2.2rem, 20px);
+  line-height: 1.3;
+}
+
+@mixin full_hw {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fja_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
