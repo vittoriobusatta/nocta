@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import aboutImage1 from "public/assets/a_01.webp";
-import aboutImage2 from "public/assets/a_02.webp";
-import aboutImage3 from "public/assets/a_03.webp";
+import aboutImage1 from "public/images/about/a_01.webp";
+import aboutImage2 from "public/images/about/a_02.webp";
+import aboutImage3 from "public/images/about/a_03.webp";
 import Link from "next/link";
 
 function About() {

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import img1 from "../../public/assets/gallery/g_01.jpg";
-import img2 from "../../public/assets/gallery/g_02.jpg";
-import img3 from "../../public/assets/gallery/g_03.jpg";
-import img4 from "../../public/assets/gallery/g_04.jpg";
-import img5 from "../../public/assets/gallery/g_05.jpg";
-import img6 from "../../public/assets/gallery/g_06.jpg";
-import img7 from "../../public/assets/gallery/g_07.jpg";
+import img1 from "../../public/images/gallery/g_01.jpg";
+import img2 from "../../public/images/gallery/g_02.jpg";
+import img3 from "../../public/images/gallery/g_03.jpg";
+import img4 from "../../public/images/gallery/g_04.jpg";
+import img5 from "../../public/images/gallery/g_05.jpg";
+import img6 from "../../public/images/gallery/g_06.jpg";
+import img7 from "../../public/images/gallery/g_07.jpg";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);

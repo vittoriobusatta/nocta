@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import landingCard from "../../public/images/bg_01.webp";
+import landingCard from "../../public/images/landing/l_01.webp";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
