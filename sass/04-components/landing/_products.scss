@@ -60,9 +60,12 @@
   &__list {
     @include fja_center;
     flex-direction: row;
-    gap: $columnSpace;
     width: 100%;
     flex-wrap: wrap;
+    row-gap: $space26;
+    @media screen and (min-width: 576px) {
+      gap: $columnSpace;
+    }
     @media screen and (min-width: 992px) {
       flex-wrap: nowrap;
     }
