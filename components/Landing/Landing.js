@@ -11,8 +11,6 @@ function Landing() {
 
   const { headerRef } = useContext(AppContext);
 
-  console.log(headerRef);
-
   // useEffect(() => {
   //   const item = itemRef.current;
   //   const innerChild = itemRefInner.current.children[0];
@@ -76,10 +74,40 @@ function Landing() {
     const options = {
       root: null,
       rootMargin: "0px",
-      threshold: 1.0, 
+      threshold: 0.07,
     };
 
-  }, []);
+    const header = headerRef.current;
+    const landing = landingRef.current;
+    const blackLogo = header?.children[0]?.children[0]?.children[0];
+    const whiteLogo = header?.children[0]?.children[0]?.children[1];
+
+    const observer = new IntersectionObserver((entries) => {
+      const isIntersecting = entries.some((entry) => entry.isIntersecting);
+      if (blackLogo && whiteLogo) {
+        // If the header is not intersecting with the viewport
+        if (!isIntersecting) {
+          blackLogo.classList.add("header__logo--black");
+          header.classList.add("header--black");
+        } else {
+          blackLogo.classList.remove("header__logo--black");
+          header.classList.remove("header--black");
+        }
+      }
+    }, options);
+
+    if (landing && header) {
+      observer.observe(landing);
+      observer.observe(header);
+    }
+
+    return () => {
+      if (landing && header) {
+        observer.unobserve(landing);
+        observer.unobserve(header);
+      }
+    };
+  }, [headerRef]);
 
   return (
     <section className="landing" ref={landingRef}>

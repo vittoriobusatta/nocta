@@ -27,7 +27,7 @@ function Showcase() {
       .then((resdata) => setData(shuffleArrayOnce(resdata)))
       .catch((error) => console.log(error));
 
-    setHeaderColor("#111");
+    setHeaderColor("black");
   }, []);
 
   const introGridRef = useRef(null);

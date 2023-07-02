@@ -1,7 +1,8 @@
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { AppContext } from "context";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,8 @@ export default function Gallery() {
   const galleryRef = useRef(null);
   const WrapRef = useRef([]);
   const columnsRef = useRef([]);
+
+  const { headerRef } = useContext(AppContext);
 
   useEffect(() => {
     const gallery = galleryRef.current;

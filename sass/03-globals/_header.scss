@@ -15,8 +15,27 @@
     padding: 20px $minGap;
   }
   &__logo {
-    & g:first-child {
+    & g {
+      transition: opacity 0.3s;
       opacity: 0;
+      &.header__logo--black {
+        opacity: 1;
+      }
+      &.header__logo--white {
+        opacity: 1;
+      }
+    }
+  }
+  & p {
+    color: $white;
+    transition: color 0.3s;
+  }
+  &--black {
+    & .header__logo g.header__logo--white {
+      opacity: 0;
+    }
+    & p {
+      color: $titleColor;
     }
   }
 }
