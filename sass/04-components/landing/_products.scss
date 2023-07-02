@@ -4,9 +4,13 @@
     min-height: 20vh;
     @include full_hw;
     @include fja_center;
-    row-gap: $space44;
     flex-direction: column;
-    padding: $space88 $minGap;
+    row-gap: $space44;
+    padding: $space44 $minGap;
+    @media screen and (min-width: 768px) {
+      row-gap: $space88;
+      padding: $space88 $minGap;
+    }
     @media screen and (min-width: 992px) {
       padding: $space144 $minGap;
       row-gap: $space144;

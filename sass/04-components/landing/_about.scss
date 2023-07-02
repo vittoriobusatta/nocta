@@ -2,8 +2,12 @@
   &__container {
     @include fja_center;
     flex-direction: column;
-    row-gap: $space88;
-    padding: $space88 $minGap;
+    row-gap: $space44;
+    padding: $space44 $minGap;
+    @media screen and (min-width: 768px) {
+      row-gap: $space88;
+      padding: $space88 $minGap;
+    }
     @media screen and (min-width: 992px) {
       padding: $space144 $minGap;
       row-gap: $space144;

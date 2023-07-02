@@ -3,7 +3,10 @@
   height: 80vw;
   inset: 0;
   overflow: hidden;
-  margin: $space88 0;
+  margin: $space44 0;
+  @media screen and (min-width: 768px) {
+    margin: $space88 0;
+  }
   @media screen and (min-width: 992px) {
     margin: $space144 0;
   }
