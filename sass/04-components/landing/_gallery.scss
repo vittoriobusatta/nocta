@@ -3,20 +3,22 @@
   height: 80vw;
   inset: 0;
   overflow: hidden;
-  margin-top: $MblPadding;
+  margin: $space88 0;
   @media screen and (min-width: 992px) {
-    margin-top: $DskPadding;
+    margin: $space144 0;
   }
   &__columns {
-    width: 100%;
+    @include full_hw;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     align-items: center;
-    gap: 2.5vw;
-    height: 100%;
+    column-gap: $columnSpace;
     will-change: transform;
-    align-items: center;
-    display: flex;
     position: relative;
+    @media screen and (min-width: 1224px) {
+      column-gap: $columnSpace1224;
+    }
   }
   &__wrap {
     z-index: 1;
@@ -34,14 +36,15 @@
   &__item {
     width: 32vw;
     height: calc(32vw * 1.3);
-    margin: 0 0 2.5vw 0;
+    margin: 0 0 $columnSpace 0;
     z-index: 1;
-    will-change: transform, filter;
     position: relative;
     overflow: hidden;
+    @media screen and (min-width: 1224px) {
+      margin: 0 0 $columnSpace1224 0;
+    }
     & img {
-      width: 100%;
-      height: 100%;
+      @include full_hw;
       object-fit: cover;
     }
   }

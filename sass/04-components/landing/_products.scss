@@ -4,17 +4,83 @@
     min-height: 20vh;
     @include full_hw;
     @include fja_center;
+    row-gap: $space44;
     flex-direction: column;
-    padding: $MblPadding $minGap;
+    padding: $space88 $minGap;
     @media screen and (min-width: 992px) {
-      padding: $DskPadding $minGap;
-      row-gap: $DskPadding;
+      padding: $space144 $minGap;
+      row-gap: $space144;
+    }
+  }
+  &__head {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__title {
+      position: relative;
+      & h1 {
+        @include title_properties;
+        font-size: $titleFontSize;
+      }
+      &::before {
+        content: attr(data-title-length);
+        position: absolute;
+        right: clamp(-22px, -5vw, -36px);
+        font-weight: 800;
+        @include paragraph_properties;
+        font-size: $wParagraphSize;
+      }
+    }
+    &__link {
+      display: inline-flex;
+      align-items: center;
+      column-gap: 1vw;
+      & p {
+        @include paragraph_properties;
+        font-size: $wParagraphSize;
+        text-align: center;
+        text-transform: uppercase;
+        @media screen and (min-width: 992px) {
+          font-size: min(1.3vw, 20px);
+        }
+      }
+      & svg {
+        display: none;
+        @media screen and (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+  }
+  &__list {
+    @include fja_center;
+    flex-direction: row;
+    gap: $columnSpace;
+    width: 100%;
+    flex-wrap: wrap;
+    @media screen and (min-width: 992px) {
+      flex-wrap: nowrap;
     }
   }
   &__item {
     @include full_hw;
     @include fja_center;
     flex-direction: column;
+    flex: 1 1 100%;
+    @media screen and (min-width: 576px) {
+      flex: 1 1 calc(50% - $space26 / 2);
+    }
+    @media screen and (min-width: 768px) {
+      flex: 1 1 calc(50% - #{$space44} / 2);
+    }
+    @media screen and (min-width: 992px) {
+      flex: auto;
+    }
+    & a {
+      display: block;
+      @include full_hw;
+    }
     &__content {
       @include full_hw;
       padding: 26px;
@@ -26,6 +92,12 @@
       background-repeat: no-repeat;
       background-size: contain;
       @media screen and (min-width: 576px) {
+        min-height: 50vw;
+      }
+      @media screen and (min-width: 768px) {
+        min-height: 40vw;
+      }
+      @media screen and (min-width: 992px) {
         min-height: 20vw;
       }
     }
@@ -34,25 +106,16 @@
       display: inline-flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8vw 0;
+      padding: max(1vw, 12px) 0;
       & h3 {
-        color: #767676;
-        font-size: min(1.3vw, 20px);
-        font-family: $manrope;
-        font-weight: 800;
+        @include paragraph_properties;
+        font-size: clamp(16px, 1.8vw, 18px);
         text-transform: uppercase;
       }
       & svg {
-        width: 1.5vw;
-        height: 1.5vw;
+        width: max(1.5vw, 20px);
+        height: max(1.5vw, 20px);
       }
     }
-  }
-  &__list {
-    @include fja_center;
-    flex-direction: row;
-    column-gap: 1.5vw;
-    width: 100%;
-    // flex-wrap: wrap;
   }
 }

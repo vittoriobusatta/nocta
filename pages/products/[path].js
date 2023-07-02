@@ -1,8 +1,8 @@
 import React from "react";
 import data from "@/public/products.json";
+import Transition from "utils/transitions";
 
 function Product({ product }) {
-  console.log(product);
   return (
     <div>
       <h1>{product[0].name}</h1>
@@ -10,7 +10,7 @@ function Product({ product }) {
   );
 }
 
-export default Product;
+export default Transition(Product);
 
 export async function getStaticPaths() {
   const paths = data.map((item) => ({

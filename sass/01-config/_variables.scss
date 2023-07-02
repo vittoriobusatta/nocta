@@ -8,9 +8,18 @@ $titleColor: #3c3c3c;
 $textColor: #767676;
 $placeholderColor: #b8b8b820;
 $landingBgImage: url("../../../public/images/landing/l_02.webp");
+$titleFontSize: min(10vw, 88px);
+$paragraphFontSize: clamp(18px, 1.8vw, 20px);
+$wParagraphSize: clamp(16px, 1.8vw, 20px);
 
-$MblPadding: 88px;
-$DskPadding: 144px;
+$space26: 26px;
+$space44: 44px;
+$space88: 88px;
+$space144: 144px;
+
+$columnSpace: 3vw;
+$columnSpace1224: 3.5vw;
+
 
 $sliderItemHeight: 60vh;
 $sliderItemGap: 7vh;

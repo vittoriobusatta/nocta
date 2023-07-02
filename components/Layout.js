@@ -2,15 +2,13 @@ import React, { useContext } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader";
-import { AppContext } from "context";
 
-function Layout({ children }) {
-  const { headerColor } = useContext(AppContext);
+function Layout({ children, headerRef }) {
 
   return (
     <>
       {/* <Loader /> */}
-      <Header headerColor={headerColor} />
+      <Header headerRef={headerRef} />
       <main>{children}</main>
       {/* <Footer /> */}
     </>

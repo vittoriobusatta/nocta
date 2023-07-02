@@ -1,9 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import aboutImage1 from "public/images/about/a_01.webp";
-import aboutImage2 from "public/images/about/a_02.webp";
-import aboutImage3 from "public/images/about/a_03.webp";
 import Link from "next/link";
+import { Arrow } from "utils/icons";
+
+const images = [];
+for (let i = 1; i <= 3; i++) {
+  images.push(require(`@/public/images/about/a_0${i}.webp`));
+}
+
+const texts = [
+  "“I wanted to take a piece of that culture that I grew up with, that school of thought, and bring the best to it. With Nocta, we were trying to make the hardest jacket, the hardest tracksuit, the hardest gloves. Just the best of that world.” - DRAKE",
+  "NOCTA, a collection for the collective, has arrived. The form fitting apparel nods to sport, but is rooted and inspired by those who roam the streets, who are on the go and want functional, comfortable and elevated every essentials.",
+];
 
 function About() {
   return (
@@ -19,85 +27,52 @@ function About() {
         <div className="about__content">
           <div className="div1">
             <Image
-              src={aboutImage1}
+              src={images[0]}
               alt="About image 1"
-              width={500}
-              height={500}
+              width={700}
+              height={700}
               priority
             />
           </div>
 
           <div className="div2">
             <Image
-              src={aboutImage1}
+              src={images[0]}
               alt="About image 1"
-              width={500}
-              height={500}
+              width={700}
+              height={700}
               className="div2__left"
             />
 
             <div className="div2__right">
               <Image
-                src={aboutImage2}
+                src={images[1]}
                 alt="About image 2"
                 width={500}
                 height={500}
               />
-              <p className="div2__text paragraph">
-                “I wanted to take a piece of that culture that I grew up with,
-                that school of thought, and bring the best to it. With Nocta, we
-                were trying to make the hardest jacket, the hardest tracksuit,
-                the hardest gloves. Just the best of that world.” - DRAKE
-              </p>
+              <p className="div2__text paragraph">{texts[0]}</p>
             </div>
           </div>
-          <p className="div5 paragraph">
-            “I wanted to take a piece of that culture that I grew up with, that
-            school of thought, and bring the best to it. With Nocta, we were
-            trying to make the hardest jacket, the hardest tracksuit, the
-            hardest gloves. Just the best of that world.” - DRAKE
-          </p>
+
+          <p className="div5 paragraph">{texts[0]}</p>
+
           <div className="div3">
             <div className="div3__bar" />
           </div>
+
           <div className="div4">
             <div>
-              <p className="div4__description paragraph">
-                NOCTA, a collection for the collective, has arrived. The form
-                fitting apparel nods to sport, but is rooted and inspired by
-                those who roam the streets, who are on the go and want
-                functional, comfortable and elevated every essentials.
-              </p>
+              <p className="div4__description paragraph">{texts[1]}</p>
               <Link href="/" className="div4__content">
                 <p>
                   More <span>about us</span>
                 </p>
-                <svg
-                  width="34"
-                  height="11"
-                  viewBox="0 0 34 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g id="Group 88">
-                    <path
-                      id="Vector"
-                      d="M23.7757 5.49973L21.707 10.3696L33.2508 5.49973L21.707 0.630592L23.7757 5.49973Z"
-                      fill="#505050"
-                    />
-                    <path
-                      id="Vector_2"
-                      d="M0.75 5.5L28.7899 5.5"
-                      stroke="#505050"
-                      strokeWidth="1.20972"
-                      strokeMiterlimit="10"
-                    />
-                  </g>
-                </svg>
+                <Arrow />
               </Link>
             </div>
             <Image
-              src={aboutImage3}
+              src={images[2]}
               alt="About image 3"
               width={700}
               height={700}

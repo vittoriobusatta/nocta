@@ -1,4 +1,4 @@
-header {
+.header {
   position: fixed;
   inset: 0 0 auto;
   width: 100%;
@@ -13,5 +13,10 @@ header {
   }
   @media screen and (min-width: 992px) {
     padding: 20px $minGap;
+  }
+  &__logo {
+    & g:first-child {
+      opacity: 0;
+    }
   }
 }

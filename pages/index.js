@@ -1,18 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import Landing from "@/components/Landing/Landing";
 import About from "@/components/Landing/About";
 import Gallery from "@/components/Gallery/Gallery.js";
 import Products from "@/components/Landing/Products";
-import { AppContext } from "context";
 import Transition from "utils/transitions";
 
 function Home() {
-  const { setHeaderColor } = useContext(AppContext);
-
-  useEffect(() => {
-    setHeaderColor("#fff");
-  }, []);
 
   return (
     <>

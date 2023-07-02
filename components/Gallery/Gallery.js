@@ -5,66 +5,23 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const image = [];
+const image = Array.from({ length: 7 }, (_, i) => ({
+  id: i + 1,
+  src: require(`@/public/images/gallery/g_0${i + 1}.jpg`),
+  alt: `Image ${i + 1}`,
+}));
 
-for (let i = 1; i <= 7; i++) {
-  image.push(require(`../../public/images/gallery/g_0${i}.jpg`));
-}
-
-const images = [
-  [
-    {
-      id: 1,
-      src: image[0],
-      alt: "Image 1",
-    },
-    {
-      id: 2,
-      src: image[1],
-      alt: "Image 2",
-    },
-  ],
-  [
-    {
-      id: 5,
-      src: image[4],
-      alt: "Image 5",
-    },
-    {
-      id: 7,
-      src: image[6],
-      alt: "Image 7",
-    },
-    {
-      id: 6,
-      src: image[5],
-      alt: "Image 6",
-    },
-  ],
-  [
-    {
-      id: 3,
-      src: image[2],
-      alt: "Image 3",
-    },
-    {
-      id: 4,
-      src: image[3],
-      alt: "Image 4",
-    },
-  ],
-];
+const images = [image.slice(0, 2), image.slice(2, 5), image.slice(5, 7)];
 
 export default function Gallery() {
-  console.log(images);
   const galleryRef = useRef(null);
   const WrapRef = useRef([]);
-  const columnsInnerRef = useRef([]);
+  const columnsRef = useRef([]);
 
   useEffect(() => {
     const gallery = galleryRef.current;
     const wrap = WrapRef.current;
-    const columnsInner = columnsInnerRef.current;
+    const columns = columnsRef.current;
 
     const scroll = () => {
       const tl = gsap.timeline({
@@ -86,7 +43,7 @@ export default function Gallery() {
           "start"
         )
         .to(
-          columnsInner,
+          columns,
           {
             ease: "none",
             startAt: { scale: 1.2 },
@@ -110,19 +67,22 @@ export default function Gallery() {
           >
             <div
               className="gallery__wrap__column"
-              ref={(el) => (columnsInnerRef.current[index] = el)}
+              ref={(el) => (columnsRef.current[index] = el)}
             >
-              {image.map((img) => (
-                <div key={img.id} className="gallery__item">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={900}
-                    height={900}
-                    priority
-                  />
-                </div>
-              ))}
+              {image.map((img) => {
+                const { id, src, alt } = img;
+                return (
+                  <div key={id} className="gallery__item">
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={900}
+                      height={900}
+                      priority
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}

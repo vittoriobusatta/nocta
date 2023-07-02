@@ -1,12 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import landingCard from "../../public/images/landing/l_01.webp";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { AppContext } from "context";
 
 function Landing() {
+  const landingRef = useRef(null);
   const itemRef = useRef(null);
   const itemRefInner = useRef(null);
+
+  const { headerRef } = useContext(AppContext);
+
+  console.log(headerRef);
 
   // useEffect(() => {
   //   const item = itemRef.current;
@@ -67,14 +72,23 @@ function Landing() {
   //   };
   // }, []);
 
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0, 
+    };
+
+  }, []);
+
   return (
-    <section className="landing">
+    <section className="landing" ref={landingRef}>
       <div className="landing__background" ref={itemRef}></div>
       <div className="landing__card">
         <div className="landing__card__image" ref={itemRefInner}>
           <Image
             src={landingCard}
-            alt="Picture of the author"
+            alt="Landing Image"
             width={800}
             height={800}
             priority

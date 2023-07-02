@@ -1,12 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const AppContext = createContext();
 
-export const AppProvider = ({ children }) => {
-  const [headerColor, setHeaderColor] = useState("#fff");
-
+export const AppProvider = ({ children, headerRef }) => {
   return (
-    <AppContext.Provider value={{ headerColor, setHeaderColor }}>
+    <AppContext.Provider
+      value={{
+        headerRef,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

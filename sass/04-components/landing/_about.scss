@@ -2,18 +2,18 @@
   &__container {
     @include fja_center;
     flex-direction: column;
-    row-gap: $MblPadding;
-    padding: $MblPadding $minGap;
+    row-gap: $space88;
+    padding: $space88 $minGap;
     @media screen and (min-width: 992px) {
-      padding: $DskPadding $minGap;
-      row-gap: $DskPadding;
+      padding: $space144 $minGap;
+      row-gap: $space144;
     }
   }
   &__title {
     & h2 {
       @include paragraph_properties;
       text-align: center;
-      font-size: clamp(14px, 2rem, 18px);
+      font-size: clamp(14px, 1.8vw, 18px);
       text-transform: uppercase;
       padding-bottom: 8px;
       font-weight: 800;
@@ -22,9 +22,9 @@
       @include fja_center;
       @include title_properties;
       text-align: center;
-      font-size: min(12vw, 88px);
       line-height: 130%;
       flex-direction: column;
+      font-size: $titleFontSize;
     }
   }
   &__content {
@@ -35,11 +35,11 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr) 0.1fr repeat(3, 1fr);
       grid-template-rows: repeat(4, 1fr);
-      column-gap: 3vw;
+      column-gap: $columnSpace;
       max-height: 700px;
     }
     @media screen and (min-width: 1224px) {
-      column-gap: 3.5vw;
+      column-gap: $columnSpace1224;
     }
     & img {
       width: 100%;
@@ -151,15 +151,15 @@
     justify-content: space-between;
     align-items: center;
     & p {
-      color: $titleColor;
-      font-size: clamp(14px, 2rem, 18px);
-      font-family: $manrope;
+      @include paragraph_properties;
+      font-size: $paragraphFontSize;
       text-transform: uppercase;
       @media screen and (min-width: 992px) {
         font-size: min(1.3vw, 20px);
       }
       & span {
         font-weight: 800;
+        color: $titleColor;
       }
     }
   }
@@ -173,6 +173,7 @@
 
 .paragraph {
   @include paragraph_properties;
+  font-size: $paragraphFontSize;
   @media screen and (min-width: 992px) {
     font-size: min(1.3vw, 20px);
   }

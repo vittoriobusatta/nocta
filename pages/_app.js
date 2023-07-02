@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "../sass/styles.scss";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
@@ -36,10 +36,12 @@ function MyApp({ Component, pageProps }) {
     requestAnimationFrame(raf);
   }
 
+  const headerRef = useRef(null);
+
   return (
     <>
-      <AppProvider>
-        <Layout>
+      <AppProvider headerRef={headerRef}>
+        <Layout headerRef={headerRef}>
           <Component {...pageProps} key={router.asPath} />
         </Layout>
       </AppProvider>
