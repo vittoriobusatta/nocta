@@ -33,7 +33,7 @@
         right: clamp(-22px, -5vw, -36px);
         font-weight: 800;
         @include paragraph_properties;
-        font-size: $wParagraphSize;
+        font-size: $ParagraphSize;
       }
     }
     &__link {
@@ -42,7 +42,7 @@
       column-gap: 1vw;
       & p {
         @include paragraph_properties;
-        font-size: $wParagraphSize;
+        font-size: $ParagraphSize;
         text-align: center;
         text-transform: uppercase;
         @media screen and (min-width: 992px) {

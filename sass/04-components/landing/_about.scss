@@ -156,7 +156,7 @@
     align-items: center;
     & p {
       @include paragraph_properties;
-      font-size: $paragraphFontSize;
+      font-size: $ParagraphSize;
       text-transform: uppercase;
       @media screen and (min-width: 992px) {
         font-size: min(1.3vw, 20px);
@@ -177,7 +177,7 @@
 
 .paragraph {
   @include paragraph_properties;
-  font-size: $paragraphFontSize;
+  font-size: $ParagraphSize;
   @media screen and (min-width: 992px) {
     font-size: min(1.3vw, 20px);
   }
