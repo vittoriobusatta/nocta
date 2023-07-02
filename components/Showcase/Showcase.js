@@ -68,7 +68,7 @@ function Showcase() {
               <div
                 className="intro-grid__img__content"
                 style={{
-                  backgroundImage: `url(/assets/products/${src}.png)`,
+                  backgroundImage: `url(/images/products/${src}.png)`,
                   height: "100%",
                   width: "100%",
                   backgroundPosition: "50% 20%",

@@ -27,7 +27,7 @@ function Products() {
                   <div
                     className="products__item__image"
                     style={{
-                      backgroundImage: `url(/assets/products/${src}.png)`,
+                      backgroundImage: `url(/images/products/${src}.png)`,
                     }}
                   />
                 </div>
