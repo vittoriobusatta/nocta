@@ -41,7 +41,7 @@ export const showSlider = (
     .addLabel("start", 0)
     .add(() => {
       const flipstate = Flip.getState(gridImages);
-      introGrid.classList.add("intro-grid--slider");
+      introGrid.classList.add("showcase__slider");
 
       gsap.set(introGrid, {
         yPercent: -100 * index,
@@ -79,7 +79,7 @@ export const showSlider = (
       "start"
     )
     .add(() => {
-      controls.classList.add("controls--open");
+      controls.classList.add("showcase__controls--open");
     }, "start")
     .fromTo(
       controlsRef.current.children[0],
@@ -136,7 +136,7 @@ export const closeSlider = (
       "start"
     )
     .add(() => {
-      controls.classList.remove("controls--open");
+      controls.classList.remove("showcase__controls--open");
     }, "start")
     .to(
       sliderTitle.main,
@@ -149,7 +149,7 @@ export const closeSlider = (
     )
     .add(() => {
       const flipstate = Flip.getState(gridImages, { props: "filter" });
-      introGrid.classList.remove("intro-grid--slider");
+      introGrid.classList.remove("showcase__slider");
       gsap.set(introGrid, {
         yPercent: 0,
       });

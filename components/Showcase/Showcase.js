@@ -37,17 +37,15 @@ function Showcase() {
   const gridImages = gridImagesRef.current;
   const introGrid = introGridRef.current;
 
-  useEffect(() => {}, []);
-
   return (
     <section className="showcase">
-      <div ref={introGridRef} className="intro-grid intro-grid--images">
+      <div ref={introGridRef} className="showcase__grid">
         {data.map((item, index) => {
           const { id, src } = item;
           return (
             <div
               key={id}
-              className="intro-grid__img"
+              className="showcase__images"
               ref={(el) => (gridImagesRef.current[index] = el)}
               onClick={() => {
                 showSlider(
@@ -66,33 +64,19 @@ function Showcase() {
               }}
             >
               <div
-                className="intro-grid__img__content"
-                style={{
-                  backgroundImage: `url(/images/products/${src}.png)`,
-                  height: "100%",
-                  width: "100%",
-                  backgroundPosition: "50% 20%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "contain",
-                }}
-              >
-                <p>{id}</p>
-              </div>
+                className="showcase__images__background"
+                style={{ backgroundImage: `url(/images/products/${src}.png)` }}
+              />
             </div>
           );
         })}
       </div>
-      <div className="slider-title oh" ref={sliderTitleRef}>
-        <h3 className="slider-title__main">
-          {data[currentSlide] && data[currentSlide].name}
-        </h3>
-        <p className="slider-title__desc">
-          {data[currentSlide] && data[currentSlide].description}
-        </p>
+      <div className="showcase__title" ref={sliderTitleRef}>
+        <h3>{data[currentSlide] && data[currentSlide].name}</h3>
       </div>
-      <div className="controls" ref={controlsRef}>
+      <div className="showcase__controls" ref={controlsRef}>
         <button
-          className="unbutton close"
+          className="showcase__controls__close"
           onClick={() => {
             closeSlider(
               currentSlide,
