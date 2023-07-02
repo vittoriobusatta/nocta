@@ -7,7 +7,7 @@ function Layout({ children, headerRef }) {
 
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <Header headerRef={headerRef} />
       <main>{children}</main>
       {/* <Footer /> */}

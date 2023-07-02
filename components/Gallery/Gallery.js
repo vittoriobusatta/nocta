@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { AppContext } from "context";
@@ -58,6 +58,7 @@ export default function Gallery() {
 
     scroll();
   }, []);
+
 
   return (
     <section ref={galleryRef} className="gallery">
