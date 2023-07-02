@@ -17,16 +17,13 @@ function Showcase() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [mode, setMode] = useState("grid");
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [sliderOpen, setSliderOpen] = useState(false);
 
   const { setHeaderColor } = useContext(AppContext);
 
   useEffect(() => {
     fetch("/products.json")
       .then((response) => response.json())
-      .then((resdata) => setData(
-        shuffleArrayOnce(resdata)
-      ))
+      .then((resdata) => setData(shuffleArrayOnce(resdata)))
       .catch((error) => console.log(error));
 
     setHeaderColor("#111");
@@ -35,20 +32,22 @@ function Showcase() {
   const introGridRef = useRef(null);
   const gridImagesRef = useRef([]);
   const controlsRef = useRef(null);
+  const sliderTitleRef = useRef(null);
 
   const gridImages = gridImagesRef.current;
   const introGrid = introGridRef.current;
 
+  useEffect(() => {}, []);
+
   return (
-    <>
-      <section ref={introGridRef} className="intro-grid intro-grid--images">
+    <section className="showcase">
+      <div ref={introGridRef} className="intro-grid intro-grid--images">
         {data.map((item, index) => {
           const { id, src } = item;
           return (
             <div
               key={id}
-              className={`intro-grid__img intro-grid__img--${id}
-              `}
+              className="intro-grid__img"
               ref={(el) => (gridImagesRef.current[index] = el)}
               onClick={() => {
                 showSlider(
@@ -61,7 +60,8 @@ function Showcase() {
                   setIsAnimating,
                   isAnimating,
                   setCurrentSlide,
-                  controlsRef
+                  controlsRef,
+                  sliderTitleRef
                 );
               }}
             >
@@ -76,29 +76,20 @@ function Showcase() {
                   backgroundSize: "contain",
                 }}
               >
-                {/* <p>{id}</p> */}
+                <p>{id}</p>
               </div>
             </div>
           );
         })}
-      </section>
-      {/* <div className="intro-title">
-        <h2 className="intro-title__main oh">
-          <span className="oh__inner">Nale Aby</span>
-        </h2>
-        <span className="intro-title__sub oh">
-          <span className="oh__inner">Prompt Fashion</span>
-        </span>
       </div>
-      <div className="slider-title">
-        <h3 className="slider-title__main oh">
-          <span className="oh__inner">Collection</span>
+      <div className="slider-title oh" ref={sliderTitleRef}>
+        <h3 className="slider-title__main">
+          {data[currentSlide] && data[currentSlide].name}
         </h3>
         <p className="slider-title__desc">
-          The collection is a celebration of beauty, sustainability, and ethical
-          production.
+          {data[currentSlide] && data[currentSlide].description}
         </p>
-      </div> */}
+      </div>
       <div className="controls" ref={controlsRef}>
         <button
           className="unbutton close"
@@ -111,14 +102,15 @@ function Showcase() {
               setMode,
               setIsAnimating,
               isAnimating,
-              controlsRef
+              controlsRef,
+              sliderTitleRef
             );
           }}
         >
           X
         </button>
       </div>
-    </>
+    </section>
   );
 }
 

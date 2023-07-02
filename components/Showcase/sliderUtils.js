@@ -13,7 +13,8 @@ export const showSlider = (
   setIsAnimating,
   isAnimating,
   setCurrentSlide,
-  controlsRef
+  controlsRef,
+  sliderTitleRef
 ) => {
   if (isAnimating || mode === "slider") return;
   setMode("slider");
@@ -21,18 +22,23 @@ export const showSlider = (
   setCurrentSlide(index);
 
   const controls = controlsRef.current;
+  const sliderTitle = {
+    el: sliderTitleRef.current,
+    main: sliderTitleRef.current.children[0],
+  };
 
-  const tl = gsap.timeline({
-    defaults: {
-      duration: 1,
-      ease: "power4.inOut",
-    },
-    onComplete: () => {
-      setIsAnimating(false);
-    },
-  });
+  gsap
+    .timeline({
+      defaults: {
+        duration: 1,
+        ease: "power4.inOut",
+      },
+      onComplete: () => {
+        setIsAnimating(false);
+      },
+    })
 
-  tl.addLabel("start", 0)
+    .addLabel("start", 0)
     .add(() => {
       const flipstate = Flip.getState(gridImages);
       introGrid.classList.add("intro-grid--slider");
@@ -53,6 +59,25 @@ export const showSlider = (
         prune: true,
       });
     }, "start")
+    .set(
+      sliderTitle.el,
+      {
+        opacity: 1,
+      },
+      "start"
+    )
+    .fromTo(
+      [sliderTitle.main, sliderTitle.desc],
+      {
+        yPercent: (pos) => (pos ? 240 : 100),
+        opacity: (pos) => (pos ? 0 : 1),
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+      },
+      "start"
+    )
     .add(() => {
       controls.classList.add("controls--open");
     }, "start")
@@ -78,7 +103,8 @@ export const closeSlider = (
   setMode,
   setIsAnimating,
   isAnimating,
-  controlsRef
+  controlsRef,
+  sliderTitleRef
 ) => {
   if (isAnimating || mode === "grid") return;
   setMode("grid");
@@ -86,33 +112,21 @@ export const closeSlider = (
 
   const controls = controlsRef.current;
 
-  const tl = gsap.timeline({
-    defaults: {
-      duration: 1,
-      ease: "power4.inOut",
-    },
-    onComplete: () => {
-      setIsAnimating(false);
-    },
-  });
-  tl.add(() => {
-    const flipstate = Flip.getState(gridImages, { props: "filter" });
-    introGrid.classList.remove("intro-grid--slider");
-    gsap.set(introGrid, {
-      yPercent: 0,
-    });
-    Flip.from(flipstate, {
-      duration: 1,
-      ease: "power4.inOut",
-      absolute: true,
-      stagger: {
-        each: 0.02,
-        from: current,
+  const sliderTitle = {
+    el: sliderTitleRef.current,
+    main: sliderTitleRef.current.children[0],
+  };
+
+  gsap
+    .timeline({
+      defaults: {
+        duration: 1,
+        ease: "power4.inOut",
       },
-      simple: true,
-      prune: true,
-    });
-  }, "start")
+      onComplete: () => {
+        setIsAnimating(false);
+      },
+    })
     .to(
       controlsRef.current.children[0],
       {
@@ -123,5 +137,32 @@ export const closeSlider = (
     )
     .add(() => {
       controls.classList.remove("controls--open");
+    }, "start")
+    .to(
+      sliderTitle.main,
+      {
+        yPercent: (pos) => (pos ? 150 : 100),
+        opacity: (pos) => (pos ? 0 : 1),
+        onComplete: () => gsap.set(sliderTitle.el, { opacity: 0 }),
+      },
+      "start"
+    )
+    .add(() => {
+      const flipstate = Flip.getState(gridImages, { props: "filter" });
+      introGrid.classList.remove("intro-grid--slider");
+      gsap.set(introGrid, {
+        yPercent: 0,
+      });
+      Flip.from(flipstate, {
+        duration: 1,
+        ease: "power4.inOut",
+        absolute: true,
+        stagger: {
+          each: 0.02,
+          from: current,
+        },
+        simple: true,
+        prune: true,
+      });
     }, "start");
 };
