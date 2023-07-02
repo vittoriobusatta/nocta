@@ -87,13 +87,10 @@
       background-color: $placeholderColor;
     }
     &__image {
-      min-height: 60vw;
+      min-height: 50vw;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
-      @media screen and (min-width: 576px) {
-        min-height: 50vw;
-      }
       @media screen and (min-width: 768px) {
         min-height: 40vw;
       }
