@@ -1,57 +1,57 @@
 [
   {
     "id": 1,
-    "name": "Wind-Breaker",
+    "name": "Golf Pants",
     "src": "p_01"
   },
   {
     "id": 2,
-    "name": "track jacket",
+    "name": "Track Jacket",
     "src": "p_02"
   },
   {
     "id": 3,
-    "name": "crew neck top",
+    "name": "Track Jacket",
     "src": "p_03"
   },
   {
     "id": 4,
-    "name": "hot step terra",
+    "name": "Hot Step Terra",
     "src": "p_04"
   },
   {
     "id": 5,
-    "name": "hot step terra",
+    "name": "Track Jacket",
     "src": "p_05"
   },
   {
     "id": 6,
-    "name": "hot step terra",
+    "name": "Golf Pants",
     "src": "p_06"
   },
   {
     "id": 7,
-    "name": "hot step terra",
+    "name": "Cardinal Tee",
     "src": "p_07"
   },
   {
     "id": 8,
-    "name": "hot step terra",
+    "name": "Golf Tee Top",
     "src": "p_08"
   },
   {
     "id": 9,
-    "name": "hot step terra",
+    "name": "Gore Tee SS",
     "src": "p_09"
   },
   {
     "id": 10,
-    "name": "hot step terra",
+    "name": "Cardinal Hoodie",
     "src": "p_10"
   },
   {
     "id": 11,
-    "name": "hot step terra",
+    "name": "Golf Socks",
     "src": "p_11"
   }
 ]

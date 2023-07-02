@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { closeSlider, showSlider } from "./sliderUtils";
 import { AppContext } from "context";
 import Transition from "utils/transitions";
+import Link from "next/link";
 
 function shuffleArrayOnce(array) {
   const shuffledArray = [...array];
@@ -66,13 +67,19 @@ function Showcase() {
               <div
                 className="showcase__images__background"
                 style={{ backgroundImage: `url(/images/products/${src}.png)` }}
-              />
+              ></div>
             </div>
           );
         })}
       </div>
       <div className="showcase__title" ref={sliderTitleRef}>
         <h3>{data[currentSlide] && data[currentSlide].name}</h3>
+        {/* <Link
+          className="showcase__title__link"
+          href={`/products/${data[currentSlide] && data[currentSlide].src}`}
+        >
+          View Product
+        </Link> */}
       </div>
       <div className="showcase__controls" ref={controlsRef}>
         <button

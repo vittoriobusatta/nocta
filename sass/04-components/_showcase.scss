@@ -86,7 +86,6 @@
   }
   &__title {
     opacity: 0;
-    pointer-events: none;
     grid-area: main;
     align-self: center;
     justify-self: center;
@@ -100,6 +99,11 @@
       font-family: $tuskerGrotesk;
       font-weight: 800;
       text-transform: uppercase;
+    }
+    &__link {
+      position: relative;
+      z-index: 60;
+      pointer-events: none;
     }
   }
   &__controls {
