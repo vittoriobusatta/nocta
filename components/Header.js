@@ -18,11 +18,18 @@ function Header() {
       </Link>
       <div
         className={`header__btn ${
-          headerColor === "white" ? "header__btn--white" : ""
+          headerColor === "black" ? "header__btn--black" : ""
         }`}
         onClick={handleMenu}
       >
-        <span>menu</span>
+        <button className="header__btn__button">
+          {[...Array(4)].map((_, index) => (
+            <span
+              className={`header__btn__line header__btn__line--${index + 1}`}
+              key={index}
+            />
+          ))}
+        </button>
       </div>
     </>
   );

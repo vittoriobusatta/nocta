@@ -4,12 +4,12 @@
     inset: 0 0 auto;
     z-index: 40;
     width: fit-content;
-    padding: 12px $minGap 0;
+    inset: 12px auto auto $minGap;
     @media screen and (min-width: 576px) {
-      padding: 16px $minGap 0;
+      inset: 16px auto auto $minGap;
     }
     @media screen and (min-width: 992px) {
-      padding: 20px $minGap 0;
+      inset: 20px auto auto $minGap;
     }
     & g {
       transition: opacity 0.3s;
@@ -23,38 +23,70 @@
     }
   }
   &__btn {
+    $size: 44px;
     position: fixed;
-    inset: 0 0 auto auto;
     z-index: 40;
-    width: fit-content;
-    min-height: 63px;
+    height: $size;
+    width: $size;
     @include fja_center;
-    cursor: pointer;
-    padding: 12px $minGap 0;
+    inset: 12px $minGap auto auto;
     @media screen and (min-width: 576px) {
-      padding: 16px $minGap 0;
-      min-height: 67px;
+      inset: 16px $minGap auto auto;
     }
     @media screen and (min-width: 992px) {
-      padding: 20px $minGap 0;
-      min-height: 71px;
+      inset: 20px $minGap auto auto;
     }
-    & span {
+    &__button {
+      position: relative;
       transition: color 0.3s;
       font-size: 20px;
+      height: max-content;
+      $size: 80%;
+      width: $size;
+      height: $size;
+      background: none;
+      cursor: pointer;
     }
-    &--white {
-      & span {
-        color: $white;
+    &__line {
+      $size: calc(50% - (1px * 4));
+      $thickness: 3px;
+      position: absolute;
+      height: $thickness;
+      background-color: $white;
+      transition: background-color 0.3s;
+      &--1 {
+        height: $size;
+        width: $thickness;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &--2 {
+        width: $size;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+      &--3 {
+        width: $size;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+      &--4 {
+        height: $size;
+        width: $thickness;
+        bottom: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &--black {
+      & .header__btn__line {
+        background-color: $titleColor;
       }
     }
   }
-  // & span {
-  //   color: $white;
-  //   transition: color 0.3s;
-  //   position: relative;
-  //   z-index: 44;
-  // }
   &--black {
     & .header__logo g.header__logo--white {
       opacity: 0;
