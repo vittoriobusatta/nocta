@@ -2,14 +2,16 @@ import { createContext, useState } from "react";
 
 export const AppContext = createContext();
 
-export const AppProvider = ({ children, headerRef }) => {
+export const AppProvider = ({ children }) => {
   const [headerColor, setHeaderColor] = useState("white");
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <AppContext.Provider
       value={{
-        headerRef,
         headerColor,
         setHeaderColor,
+        menuIsOpen,
+        setMenuIsOpen,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import landingCard from "../../public/images/landing/l_01.webp";
 import { useEffect, useRef } from "react";
 import { AppContext } from "context";
@@ -10,7 +10,7 @@ function Landing() {
   const itemRef = useRef(null);
   const itemRefInner = useRef(null);
 
-  const { setHeaderColor } = useContext(AppContext);
+  const { setHeaderColor, menuIsOpen } = useContext(AppContext);
 
   useEffect(() => {
     const item = itemRef.current;
@@ -72,6 +72,7 @@ function Landing() {
   }, []);
 
   useEffect(() => {
+    if (menuIsOpen) return;
     const options = {
       root: null,
       rootMargin: "0px",
@@ -94,7 +95,7 @@ function Landing() {
     return () => {
       observer.unobserve(landing);
     };
-  }, []);
+  }, [menuIsOpen]);
 
   return (
     <section className="landing" ref={landingRef}>

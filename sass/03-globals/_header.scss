@@ -1,20 +1,16 @@
 .header {
-  position: fixed;
-  inset: 0 0 auto;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 60px;
-  z-index: 20;
-  padding: 12px $minGap;
-  @media screen and (min-width: 576px) {
-    padding: 16px $minGap;
-  }
-  @media screen and (min-width: 992px) {
-    padding: 20px $minGap;
-  }
   &__logo {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 40;
+    width: fit-content;
+    padding: 12px $minGap 0;
+    @media screen and (min-width: 576px) {
+      padding: 16px $minGap 0;
+    }
+    @media screen and (min-width: 992px) {
+      padding: 20px $minGap 0;
+    }
     & g {
       transition: opacity 0.3s;
       opacity: 0;
@@ -26,9 +22,27 @@
       }
     }
   }
-  & p {
+  &__btn {
+    position: fixed;
+    inset: 0 0 auto auto;
+    z-index: 40;
+    width: fit-content;
+    min-height: 61px;
+    @include fja_center;
+    cursor: pointer;
+    padding: 12px $minGap 0;
+    @media screen and (min-width: 576px) {
+      padding: 16px $minGap 0;
+    }
+    @media screen and (min-width: 992px) {
+      padding: 20px $minGap;
+    }
+  }
+  & span {
     color: $white;
     transition: color 0.3s;
+    position: relative;
+    z-index: 44;
   }
   &--black {
     & .header__logo g.header__logo--white {

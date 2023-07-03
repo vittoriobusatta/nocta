@@ -3,12 +3,12 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader";
 
-function Layout({ children, headerRef }) {
+function Layout({ children }) {
 
   return (
     <>
-      <Loader />
-      <Header headerRef={headerRef} />
+      {/* <Loader /> */}
+      <Header />
       <main>{children}</main>
       {/* <Footer /> */}
     </>

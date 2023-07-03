@@ -5,7 +5,7 @@
   position: fixed;
   @include fja_center;
   inset: 0;
-  z-index: 30;
+  z-index: 100;
   background-color: $color1;
   &__logo {
     overflow: hidden;
