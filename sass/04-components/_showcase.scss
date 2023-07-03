@@ -69,21 +69,22 @@
     }
   }
   &__controls {
+    $size: 44px;
+    height: $size;
+    width: $size;
     position: fixed;
-    top: 12px;
-    min-height: 44px;
     z-index: 50;
-    right: $minGap;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: none;
     transition: background-color 1s ease-in-out;
+    inset: 12px $minGap auto auto;
     @media screen and (min-width: 576px) {
-      top: 16px;
+      inset: 16px $minGap auto auto;
     }
     @media screen and (min-width: 992px) {
-      top: 20px;
+      inset: 20px $minGap auto auto;
     }
     &--open {
       pointer-events: auto;
@@ -101,6 +102,7 @@
       $size: 35px;
       height: $size;
       width: $size;
+      background: none;
     }
   }
 }

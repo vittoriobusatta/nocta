@@ -6,13 +6,13 @@ import { AppContext } from "context";
 import Menu from "./Menu/Menu";
 
 function Layout({ children }) {
-  const { menuIsOpen } = useContext(AppContext);
+  const { menuIsOpen, setMenuIsOpen } = useContext(AppContext);
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <Header />
       <main>{children}</main>
-      <Menu menuIsOpen={menuIsOpen} />
+      <Menu menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
       {/* <Footer /> */}
     </>
   );
