@@ -7,7 +7,7 @@ for (let i = 1; i <= 4; i++) {
   images.push(require(`@/public/images/menu/m_0${i}.jpg`));
 }
 
-const menuNames = ["Shop All", "Campaign", "Next Drop", "Cart"];
+const menuNames = ["Shop All", "Campaign", "About us", "Cart"];
 
 const menuItems = menuNames.map((name, index) => {
   return {

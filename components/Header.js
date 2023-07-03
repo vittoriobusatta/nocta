@@ -4,12 +4,14 @@ import React, { useContext } from "react";
 import { Logo } from "utils/icons";
 
 function Header() {
-  const { headerColor, setMenuIsOpen, setHeaderColor } = useContext(AppContext);
+  const { headerColor, menuIsOpen, setMenuIsOpen, setHeaderColor } = useContext(AppContext);
 
   const handleMenu = () => {
     setMenuIsOpen((prev) => !prev);
     setHeaderColor("black");
   };
+
+  const isActive = menuIsOpen ? "header__btn__button--active" : "";
 
   return (
     <>
@@ -22,7 +24,9 @@ function Header() {
         }`}
         onClick={handleMenu}
       >
-        <button className="header__btn__button">
+        <button className={
+          `header__btn__button ${isActive}`
+        }>
           {[...Array(4)].map((_, index) => (
             <span
               className={`header__btn__line header__btn__line--${index + 1}`}

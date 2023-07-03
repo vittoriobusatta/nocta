@@ -46,6 +46,13 @@
       height: $size;
       background: none;
       cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      &:hover {
+        transform: scale(0.9) rotate(calc(90deg * 2));
+      }
+      &--active {
+        transform: rotate(45deg)
+      }
     }
     &__line {
       $size: calc(50% - (1px * 4));
