@@ -47,11 +47,19 @@
       background: none;
       cursor: pointer;
       transition: transform 0.3s ease-in-out;
-      &:hover {
-        transform: scale(0.9) rotate(calc(90deg * 2));
+      @media screen and (min-width: 992px) {
+        &:hover {
+          transform: scale(0.85) rotate(calc(90deg * 2));
+        }
       }
+
       &--active {
-        transform: rotate(45deg)
+        transform: rotate(calc(45deg * 5));
+        @media screen and (min-width: 992px) {
+          &:hover {
+            transform: scale(0.85) rotate(calc(45deg * 1));
+          }
+        }
       }
     }
     &__line {
