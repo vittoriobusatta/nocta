@@ -2,11 +2,9 @@ import { AppContext } from "context";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { Logo } from "utils/icons";
-import Menu from "./Menu/Menu";
 
 function Header() {
-  const { headerColor, menuIsOpen, setMenuIsOpen, setHeaderColor } =
-    useContext(AppContext);
+  const { headerColor, setMenuIsOpen, setHeaderColor } = useContext(AppContext);
 
   const handleMenu = () => {
     setMenuIsOpen((prev) => !prev);
@@ -18,10 +16,14 @@ function Header() {
       <Link href="/" className="header__logo">
         <Logo className="" color={headerColor} />
       </Link>
-      <div className="header__btn" onClick={handleMenu}>
+      <div
+        className={`header__btn ${
+          headerColor === "white" ? "header__btn--white" : ""
+        }`}
+        onClick={handleMenu}
+      >
         <span>menu</span>
       </div>
-      {menuIsOpen && <Menu />}
     </>
   );
 }

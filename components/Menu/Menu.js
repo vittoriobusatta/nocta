@@ -7,40 +7,27 @@ for (let i = 1; i <= 4; i++) {
   images.push(require(`@/public/images/menu/m_0${i}.jpg`));
 }
 
-const menuItems = [
-  {
-    id: 1,
-    name: "Shop All",
-    src: images[0],
-  },
-  {
-    id: 2,
-    name: "Campaign",
-    src: images[1],
-  },
-  {
-    id: 3,
-    name: "Next Drop",
-    src: images[2],
-  },
-  {
-    id: 4,
-    name: "Cart",
-    src: images[3],
-  },
-];
+const menuNames = ["Shop All", "Campaign", "Next Drop", "Cart"];
 
-function Menu() {
+const menuItems = menuNames.map((name, index) => {
+  return {
+    id: index + 1,
+    name,
+    src: images[index],
+  };
+});
+
+function Menu({ menuIsOpen }) {
   const [currentItem, setCurrentItem] = useState(0);
 
   return (
-    <section className="menu">
+    <section className={`menu ${menuIsOpen ? "menu--open" : ""}`}>
       <div className="menu__container">
         <ul className="menu__list">
           {menuItems.map((item, index) => {
             const isActive = currentItem === index;
             const { src, name, id } = item;
-            const imageHW = 150
+            const imageHW = 150;
             return (
               <li
                 className={`menu__item ${isActive ? "menu__item--active" : ""}`}

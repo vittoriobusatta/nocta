@@ -6,6 +6,13 @@
   width: 100%;
   z-index: 39;
   background-color: $color1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
   &__container {
     @include full_hw;
     @include fja_center;
@@ -19,7 +26,7 @@
     padding: 0 $minGap;
     max-width: 1400px;
     @media screen and (min-width: 992px) {
-      row-gap: min(2vw, $space26);
+      row-gap: min(2vw, $space14);
     }
   }
   &__item {
@@ -43,11 +50,14 @@
     &__link {
       font-family: $univers93;
       text-transform: uppercase;
-      font-size: min(8vw, 106px);
+      font-size: $titleFontSize;
       color: transparent;
       transition: color 0.3s;
       -webkit-text-stroke: 2px $titleColor;
       cursor: pointer;
+      @media screen and (min-width: 768px) {
+        font-size: min(8vw, 106px);
+      }
     }
     &__img {
       display: none;
