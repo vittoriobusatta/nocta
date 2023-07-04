@@ -1,44 +1,4 @@
 import { gsap } from "gsap";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-export const setTitles = ({ phrases, headingLevel, className }) => {
-  const animation = {
-    initial: { y: "100%" },
-    enter: (i) => ({
-      y: "0",
-      transition: {
-        duration: 0.85,
-        ease: [0.33, 1, 0.68, 1],
-        delay: 0.075 * i,
-      },
-    }),
-  };
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-    // triggerOnce: true,
-  });
-
-  const HeadingComponent = `h${headingLevel}`;
-
-  return (
-    <HeadingComponent className={className ? className : null} ref={ref}>
-      {phrases?.map((phrase, index) => (
-        <div key={index} className="hidden">
-          <motion.p
-            custom={index}
-            variants={animation}
-            initial="initial"
-            animate={inView ? "enter" : ""}
-          >
-            {phrase}
-          </motion.p>
-        </div>
-      ))}
-    </HeadingComponent>
-  );
-};
 
 export const menuAnimation = ({
   menuIsOpen,

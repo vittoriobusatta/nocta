@@ -56,13 +56,12 @@ function Products() {
             yPercent: 0,
             ease: [0.33, 1, 0.68, 1],
           }, "start");
-          tl.addLabel("end");
           tl.to(items.current, {
             scale: 1,
             ease: [0.33, 1, 0.68, 1],
             stagger: 0.05,
             delay: 0.2,
-          }, "end");
+          }, "-=0.4");
         }
       });
     }, options);
