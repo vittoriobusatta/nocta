@@ -31,7 +31,6 @@ function About() {
               alt="About image 1"
               width={700}
               height={700}
-              priority
             />
           </div>
 
@@ -76,7 +75,6 @@ function About() {
               alt="About image 3"
               width={700}
               height={700}
-              priority
             />
           </div>
         </div>

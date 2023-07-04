@@ -10,9 +10,15 @@ function Landing() {
   const itemRef = useRef(null);
   const itemRefInner = useRef(null);
 
-  const { setHeaderColor, menuIsOpen } = useContext(AppContext);
+  const {
+    setHeaderColor,
+    menuIsOpen,
+    isLoadingComplete,
+    setIsLoadingComplete,
+  } = useContext(AppContext);
 
   useEffect(() => {
+    if (!isLoadingComplete) return;
     const item = itemRef.current;
     const innerChild = itemRefInner.current.children[0];
     const tl = gsap.timeline({
@@ -20,7 +26,10 @@ function Landing() {
         duration: 1,
         ease: "power3.inOut",
       },
-      delay: 1.60,
+      delay: 1.6,
+      onComplete: () => {
+        setIsLoadingComplete(false);
+      },
     });
 
     gsap.set([item], {
@@ -69,7 +78,7 @@ function Landing() {
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [isLoadingComplete]);
 
   useEffect(() => {
     if (menuIsOpen) return;

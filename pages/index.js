@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery/Gallery.js";
 import Products from "@/components/Landing/Products";
 import Transition from "utils/transitions";
 import { AppContext } from "context";
+import Loader from "@/components/Loader";
 
 function Home() {
   const { setHeaderColor } = useContext(AppContext);  

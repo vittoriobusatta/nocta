@@ -1,65 +1,94 @@
+import { AppContext } from "context";
 import { gsap } from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 function Loader() {
+  const { setIsLoadingComplete } = useContext(AppContext);
+
   const loaderRef = useRef(null);
   const logoPathRef = useRef([]);
   const overlayRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "power3.inOut",
-      },
-    });
+    const loaderAnimation = async () => {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "power3.inOut",
+        },
+        onComplete: () => {
+          setIsLoadingComplete(true);
+        },
+      });
 
-    gsap.set(loaderRef.current, {
-      yPercent: 0,
-      rotation: 0,
-      scaleY: 1,
-      scaleX: 1,
-      duration: 1,
-    });
-
-    gsap.set(overlayRef.current, {
-      yPercent: 100,
-      rotation: 0,
-      scaleY: 1,
-      scaleX: 1,
-      duration: 1,
-    });
-
-    gsap.set(logoPathRef.current, {
-      yPercent: 130,
-      rotation: 0,
-    });
-
-    gsap.to(logoPathRef.current, {
-      yPercent: 0,
-      rotation: 0,
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
-      stagger: 0.15,
-      delay: 0.5,
-    });
-
-    tl.to(overlayRef.current, {
-      yPercent: 0,
-      rotation: 0,
-      delay: 1.5,
-    });
-
-    tl.to(
-      loaderRef.current,
-      {
+      gsap.set(loaderRef.current, {
         yPercent: -100,
         rotation: 0,
         scaleY: 1,
         scaleX: 1,
-      },
+        duration: 1,
+      });
 
-      "-=0.1"
-    );
+      gsap.set(overlayRef.current, {
+        yPercent: 100,
+        rotation: 0,
+        scaleY: 1,
+        scaleX: 1,
+        duration: 1,
+      });
+
+      gsap.set(logoPathRef.current, {
+        yPercent: 130,
+        rotation: 0,
+      });
+
+      gsap.to(loaderRef.current, {
+        yPercent: 0,
+        rotation: 0,
+        scaleY: 1,
+        scaleX: 1,
+        duration: 0.5,
+        delay: 0,
+      });
+
+      gsap.to(logoPathRef.current, {
+        yPercent: 0,
+        rotation: 0,
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1],
+        stagger: 0.15,
+        delay: 0.5,
+      });
+
+      tl.to(overlayRef.current, {
+        yPercent: 0,
+        rotation: 0,
+        delay: 1.5,
+      });
+
+      tl.to(
+        loaderRef.current,
+        {
+          yPercent: -100,
+          rotation: 0,
+          scaleY: 1,
+          scaleX: 1,
+        },
+        "-=0.1"
+      );
+    };
+
+    const runLoaderAnimation = async () => {
+      await loaderAnimation();
+    };
+
+    runLoaderAnimation();
+
+    return () => {
+      gsap.killTweensOf(loaderRef.current);
+      gsap.killTweensOf(overlayRef.current);
+      gsap.killTweensOf(logoPathRef.current);
+    }
+
   }, []);
 
   const logoColor = "#3C3C3C";

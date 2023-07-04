@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import Lenis from "@studio-freight/lenis";
 import { AppProvider } from "context";
+import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -36,12 +37,13 @@ function MyApp({ Component, pageProps }) {
     requestAnimationFrame(raf);
   }
 
-
   return (
     <>
       <AppProvider>
         <Layout>
-          <Component {...pageProps} key={router.asPath} />
+          <AnimatePresence mode="wait" initial={false}>
+            <Component {...pageProps} key={router.asPath} />
+          </AnimatePresence>
         </Layout>
       </AppProvider>
     </>
