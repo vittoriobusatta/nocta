@@ -30,7 +30,7 @@ function Products() {
             const { id, name, src } = item;
             return (
               <div className="products__item" key={id}>
-                <Link href={`/products/${src}`}>
+                {/* <Link href={`/products/${src}`}> */}
                   <div className="products__item__content">
                     <div
                       className="products__item__image"
@@ -43,7 +43,7 @@ function Products() {
                     <h3>{name}</h3>
                     <Viewfinder />
                   </div>
-                </Link>
+                {/* </Link> */}
               </div>
             );
           })}
