@@ -4,6 +4,7 @@ import landingCard from "../../public/images/landing/l_01.webp";
 import { useEffect, useRef } from "react";
 import { AppContext } from "context";
 import { gsap } from "gsap";
+import { landingAnimation, landingObserver } from "utils/animations";
 
 function Landing() {
   const landingRef = useRef(null);
@@ -19,91 +20,22 @@ function Landing() {
 
   useEffect(() => {
     if (!isLoadingComplete) return;
-    const item = itemRef.current;
-    const innerChild = itemRefInner.current.children[0];
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 1,
-        ease: "power3.inOut",
-      },
-      delay: 1.6,
-      onComplete: () => {
-        setIsLoadingComplete(false);
-      },
+    landingAnimation({
+      itemRef,
+      itemRefInner,
+      setIsLoadingComplete,
     });
-
-    gsap.set([item], {
-      yPercent: 50,
-      startAt: {
-        rotation: 0,
-      },
-      rotation: 7,
-      scaleY: 1.2,
-      scaleX: 1.2,
-    });
-
-    gsap.set([innerChild], {
-      yPercent: -50,
-      startAt: {
-        rotation: 0,
-      },
-      rotation: -7,
-      scaleY: 1.2,
-      scaleX: 1.2,
-    });
-
-    tl.to(item, {
-      yPercent: 0,
-      rotation: 0,
-      scaleY: 1,
-      scaleX: 1,
-    });
-
-    tl.to(
-      innerChild,
-      {
-        yPercent: 0,
-        rotation: 0,
-        scaleY: 1,
-        scaleX: 1,
-        onComplete: () => {
-          itemRefInner.current.classList.add(
-            "landing__card__image--animateComplete"
-          );
-        },
-      },
-      0
-    );
 
     return () => {
-      tl.kill();
+      gsap.killTweensOf(itemRef.current);
+      gsap.killTweensOf(itemRefInner.current.children[0]);
     };
   }, [isLoadingComplete]);
 
   useEffect(() => {
     if (menuIsOpen) return;
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.07,
-    };
-
     const landing = landingRef.current;
-
-    const observer = new IntersectionObserver((entries) => {
-      const isIntersecting = entries.some((entry) => entry.isIntersecting);
-      if (isIntersecting) {
-        setHeaderColor("white");
-      } else {
-        setHeaderColor("black");
-      }
-    }, options);
-
-    observer.observe(landing);
-
-    return () => {
-      observer.unobserve(landing);
-    };
+    landingObserver({ setHeaderColor, landing });
   }, [menuIsOpen]);
 
   return (

@@ -1,32 +1,26 @@
-import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { menuAnimation } from "utils/animations";
 
 const images = [];
-
-for (let i = 1; i <= 4; i++) {
-  images.push(require(`@/public/images/menu/m_0${i}.jpg`));
-}
-
 const imagesHovered = [];
 
 for (let i = 1; i <= 4; i++) {
+  images.push(require(`@/public/images/menu/m_0${i}.jpg`));
   imagesHovered.push(require(`@/public/images/menu/m_0${i}_hovered.jpg`));
 }
 
 const menuNames = ["Shop All", "Campaign", "About us", "Cart"];
 const menuLinks = ["/products", "/", "/", "/"];
 
-const menuItems = menuNames.map((name, index) => {
-  return {
-    id: index + 1,
-    name,
-    src: images[index],
-    link: menuLinks[index],
-    srcHovered: imagesHovered[index],
-  };
-});
+const menuItems = menuNames.map((name, index) => ({
+  id: index + 1,
+  name,
+  src: images[index],
+  link: menuLinks[index],
+  srcHovered: imagesHovered[index],
+}));
 
 function Menu({ menuIsOpen, setMenuIsOpen }) {
   const [currentItem, setCurrentItem] = useState(0);
@@ -40,65 +34,14 @@ function Menu({ menuIsOpen, setMenuIsOpen }) {
     setMenuIsOpen(false);
   };
 
-  const animateMenu = () => {
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 0.5,
-        ease: "power3.inOut",
-      },
-    });
-
-    if (menuIsOpen) {
-      console.log("open");
-      tl.to(menuRef.current, {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        ease: [0.76, 0, 0.24, 1],
-      })
-        .fromTo(
-          itemsRef.current,
-          {
-            duration: 1,
-            yPercent: 100,
-            ease: [0.76, 0, 0.24, 1],
-          },
-          {
-            yPercent: 0,
-            stagger: 0.15,
-          }
-        )
-        .fromTo(
-          imagesRef.current,
-          {
-            height: 0,
-            scale: 0.5,
-          },
-          {
-            height: "auto",
-            stagger: 0.1,
-            scale: 1,
-          },
-          "-=0.6"
-        )
-        .fromTo(
-          quoteRef.current,
-          {
-            yPercent: 100,
-          },
-          {
-            yPercent: 0,
-          }
-        );
-    } else {
-      tl.to(menuRef.current, {
-        clipPath: "polygon(0 0, 0% 0, 0% 100%, 0% 100%)",
-      });
-    }
-
-    return tl;
-  };
-
   useEffect(() => {
-    const tl = animateMenu();
+    const tl = menuAnimation({
+      menuIsOpen,
+      menuRef,
+      itemsRef,
+      imagesRef,
+      quoteRef,
+    });
     return () => tl.kill();
   }, [menuIsOpen]);
 

@@ -4,7 +4,7 @@
   height: calc(100% + env(safe-area-inset-top));
   min-height: -webkit-fill-available;
   width: 100%;
-  z-index: 39;
+  z-index: 99;
   background-color: $color1;
   &__container {
     @include full_hw;
