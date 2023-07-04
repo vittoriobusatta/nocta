@@ -10,12 +10,12 @@ function Layout({ children }) {
   const { menuIsOpen, setMenuIsOpen } = useContext(AppContext);
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <Cursor />
       <Header />
       <main>{children}</main>
       <Menu menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

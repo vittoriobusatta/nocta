@@ -48,8 +48,7 @@ function About() {
       yPercent: 150,
     });
     tl.set(images, {
-      // height: 0,
-      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)"
+      clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
     });
 
     const options = {
@@ -83,7 +82,6 @@ function About() {
             images,
             {
               clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0% 100%)",
-              // scale: 1,
               stagger: 0.2,
             },
             "start"

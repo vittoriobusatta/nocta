@@ -1,0 +1,23 @@
+footer {
+  padding: 14px $minGap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include paragraph_properties;
+  @media screen and (min-width: 768px) {
+    padding: $space26 $minGap;
+  }
+  & p {
+    font-weight: 500;
+    font-size: $ParagraphSize;
+    color: $titleColor;
+    flex: 1;
+    text-align: center;
+  }
+  & a {
+    color: $titleColor;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+}
