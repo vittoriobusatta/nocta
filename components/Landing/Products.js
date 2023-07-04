@@ -20,16 +20,15 @@ function Products() {
   const tl = gsap.timeline({
     defaults: {
       duration: 0.5,
-      ease: "power3.inOut",
+      ease: [0.33, 1, 0.68, 1],
     },
   });
 
   useEffect(() => {
-    tl.set(titleref.current, { yPercent: 100, ease: [0.33, 1, 0.68, 1] });
-    tl.set(linkRef.current, { yPercent: 100, ease: [0.33, 1, 0.68, 1] });
+    tl.set(titleref.current, { yPercent: 100 });
+    tl.set(linkRef.current, { yPercent: 100 });
     tl.set(items.current, {
       scale: 0.95,
-      ease: [0.33, 1, 0.68, 1],
     });
 
     const options = {
@@ -48,21 +47,26 @@ function Products() {
             titleref.current,
             {
               yPercent: 0,
-              ease: [0.33, 1, 0.68, 1],
             },
             "start"
           );
-          tl.to(linkRef.current, {
-            yPercent: 0,
-            ease: [0.33, 1, 0.68, 1],
-            delay: 0.2,
-          }, "start");
-          tl.to(items.current, {
-            scale: 1,
-            ease: [0.33, 1, 0.68, 1],
-            stagger: 0.05,
-            delay: 0.2,
-          }, "-=0.4");
+          tl.to(
+            linkRef.current,
+            {
+              yPercent: 0,
+              delay: 0.2,
+            },
+            "start"
+          );
+          tl.to(
+            items.current,
+            {
+              scale: 1,
+              stagger: 0.05,
+              delay: 0.2,
+            },
+            "-=0.4"
+          );
         }
       });
     }, options);

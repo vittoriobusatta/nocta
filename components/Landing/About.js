@@ -26,7 +26,7 @@ function About() {
   const tl = gsap.timeline({
     defaults: {
       duration: 0.5,
-      ease: "power3.inOut",
+      ease: [0.33, 1, 0.68, 1],
     },
   });
 
@@ -39,21 +39,16 @@ function About() {
     const images = imagesRef.current;
     const subtitle = subtitleRef.current;
 
-    tl.set(title, {
+    const tsAnim = [title, subtitle];
+
+    tl.set(tsAnim, {
       yPercent: 100,
-      ease: [0.33, 1, 0.68, 1],
-    });
-    tl.set(subtitle, {
-      yPercent: 100,
-      ease: [0.33, 1, 0.68, 1],
     });
     tl.set(ctaArray, {
       yPercent: 150,
-      ease: [0.33, 1, 0.68, 1],
     });
     tl.set(images, {
       height: 0,
-      ease: [0.33, 1, 0.68, 1],
     });
 
     const options = {
@@ -69,11 +64,9 @@ function About() {
         if (entry.isIntersecting) {
           tl.to(subtitle, {
             yPercent: 0,
-            ease: [0.33, 1, 0.68, 1],
           });
           tl.to(title, {
             yPercent: 0,
-            ease: [0.33, 1, 0.68, 1],
             stagger: 0.2,
           });
           tl.addLabel("start");
@@ -81,7 +74,6 @@ function About() {
             ctaArray,
             {
               yPercent: 0,
-              ease: [0.33, 1, 0.68, 1],
               stagger: 0.2,
             },
             "start"
@@ -91,7 +83,6 @@ function About() {
             {
               height: "auto",
               scale: 1,
-              ease: [0.33, 1, 0.68, 1],
               stagger: 0.2,
             },
             "start"
