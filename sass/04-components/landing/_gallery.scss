@@ -3,16 +3,16 @@
   inset: 0;
   height: 60vh;
   overflow: hidden;
-  margin: $space44 0;
+  margin: $space44 0 0;
   @media screen and (min-width: 576px) {
     height: 80vh;
   }
   @media screen and (min-width: 768px) {
-    margin: $space88 0;
+    margin: $space88 0 0;
     height: 80vw;
   }
   @media screen and (min-width: 992px) {
-    margin: $space144 0;
+    margin: $space144 0 0;
   }
   &__columns {
     @include full_hw;
