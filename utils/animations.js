@@ -194,6 +194,11 @@ export const landingAnimation = ({
     },
     0
   );
+
+  return () => {
+    gsap.killTweensOf(itemRef.current);
+    gsap.killTweensOf(itemRefInner.current.children[0]);
+  };
 };
 
 export const landingObserver = ({ setHeaderColor, landing }) => {

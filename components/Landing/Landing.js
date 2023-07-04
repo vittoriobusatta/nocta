@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import landingCard from "../../public/images/landing/l_01.webp";
 import { useEffect, useRef } from "react";
 import { AppContext } from "context";
-import { gsap } from "gsap";
 import { landingAnimation, landingObserver } from "utils/animations";
 
 function Landing() {
@@ -25,11 +24,6 @@ function Landing() {
   //     itemRefInner,
   //     setIsLoadingComplete,
   //   });
-
-  //   return () => {
-  //     gsap.killTweensOf(itemRef.current);
-  //     gsap.killTweensOf(itemRefInner.current.children[0]);
-  //   };
   // }, [isLoadingComplete]);
 
   useEffect(() => {

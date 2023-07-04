@@ -4,7 +4,8 @@ import React, { useContext } from "react";
 import { Logo } from "utils/icons";
 
 function Header() {
-  const { headerColor, menuIsOpen, setMenuIsOpen, setHeaderColor } = useContext(AppContext);
+  const { headerColor, menuIsOpen, setMenuIsOpen, setHeaderColor } =
+    useContext(AppContext);
 
   const handleMenu = () => {
     setMenuIsOpen((prev) => !prev);
@@ -15,7 +16,11 @@ function Header() {
 
   return (
     <>
-      <Link href="/" className="header__logo">
+      <Link
+        href="/"
+        className="header__logo"
+        onClick={() => setMenuIsOpen(false)}
+      >
         <Logo className="" color={headerColor} />
       </Link>
       <div
@@ -24,9 +29,7 @@ function Header() {
         }`}
         onClick={handleMenu}
       >
-        <button className={
-          `header__btn__button ${isActive}`
-        }>
+        <button className={`header__btn__button ${isActive}`}>
           {[...Array(4)].map((_, index) => (
             <span
               className={`header__btn__line header__btn__line--${index + 1}`}

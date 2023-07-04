@@ -36,7 +36,6 @@
     }
     &__image {
       position: relative;
-      overflow: hidden;
       & img {
         position: relative;
         z-index: 2;
@@ -45,14 +44,12 @@
           width: 60vw;
         }
       }
-      &--animateComplete {
-        overflow: initial;
-        & .landing__card__blur {
-          opacity: 1;
-          animation: moveMobile 2s ease-in-out infinite;
-          @media screen and (min-width: 992px) {
-            animation: moveDesktop 2s ease-in-out infinite;
-          }
+      overflow: initial;
+      & .landing__card__blur {
+        opacity: 1;
+        animation: moveMobile 2s ease-in-out infinite;
+        @media screen and (min-width: 992px) {
+          animation: moveDesktop 2s ease-in-out infinite;
         }
       }
     }

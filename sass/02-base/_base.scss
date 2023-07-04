@@ -40,7 +40,7 @@ html {
   background-color: $background;
   width: 100%;
   transform-origin: bottom;
-  z-index: 88;
+  z-index: 102;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +58,7 @@ html {
   background-color: $background;
   width: 100%;
   transform-origin: top;
-  z-index: 88;
+  z-index: 102;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,4 +66,31 @@ html {
     height: 80px;
     width: auto;
   }
+}
+
+.custom-cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.custom-cursor__ball--big {
+  content: "";
+  width: 35px;
+  height: 35px;
+  background-color: $color1;
+  border-radius: 50%;
+}
+
+.custom-cursor__ball--small {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: $titleColor;
+  border-radius: 50%;
 }
