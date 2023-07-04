@@ -25,9 +25,16 @@ function Products() {
   });
 
   useEffect(() => {
-    tl.set(titleref.current, { yPercent: 100 });
-    tl.set(linkRef.current, { yPercent: 100 });
-    tl.set(items.current, {
+    const links = [
+      linkRef.current.children[0],
+      linkRef.current.children[1].children[0],
+    ]
+    const title = titleref.current;
+    const images = items.current;
+
+    tl.set(title, { yPercent: 100 });
+    tl.set(links, { yPercent: 100 });
+    tl.set(images, {
       scale: 0.95,
     });
 
@@ -44,22 +51,23 @@ function Products() {
         if (entry.isIntersecting) {
           tl.addLabel("start");
           tl.to(
-            titleref.current,
+            title,
             {
               yPercent: 0,
             },
             "start"
           );
           tl.to(
-            linkRef.current,
+            links,
             {
               yPercent: 0,
               delay: 0.2,
+              stagger: 0.2,
             },
             "start"
           );
           tl.to(
-            items.current,
+            images,
             {
               scale: 1,
               stagger: 0.05,
@@ -89,11 +97,9 @@ function Products() {
           >
             <h1 ref={titleref}>All Products</h1>
           </div>
-          <div className="products__head__link hidden">
-            <Link href="/products" ref={linkRef}>
-              View All
-            </Link>
-            {/* <Arrow /> */}
+          <div className="products__head__link hidden" ref={linkRef}>
+            <Link href="/products">View All</Link>
+            <Arrow />
           </div>
         </div>
         <div className="products__list">
