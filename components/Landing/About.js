@@ -5,7 +5,7 @@ import { Arrow } from "utils/icons";
 
 const images = [];
 for (let i = 1; i <= 3; i++) {
-  images.push(require(`@/public/images/about/a_0${i}.webp`));
+  images.push(require(`/public/images/about/a_0${i}.webp`));
 }
 
 const texts = [

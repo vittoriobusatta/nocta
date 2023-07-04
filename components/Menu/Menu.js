@@ -7,8 +7,8 @@ const images = [];
 const imagesHovered = [];
 
 for (let i = 1; i <= 4; i++) {
-  images.push(require(`@/public/images/menu/m_0${i}.jpg`));
-  imagesHovered.push(require(`@/public/images/menu/m_0${i}_hovered.jpg`));
+  images.push(require(`/public/images/menu/m_0${i}.jpg`));
+  imagesHovered.push(require(`/public/images/menu/m_0${i}_hovered.jpg`));
 }
 
 const menuNames = ["Shop All", "Campaign", "About us", "Cart"];

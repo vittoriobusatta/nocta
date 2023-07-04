@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const image = Array.from({ length: 7 }, (_, i) => ({
   id: i + 1,
-  src: require(`@/public/images/gallery/g_0${i + 1}.webp`),
+  src: require(`/public/images/gallery/g_0${i + 1}.webp`),
   alt: `Image ${i + 1}`,
 }));
 
