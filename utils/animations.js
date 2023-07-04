@@ -218,3 +218,33 @@ export const landingObserver = ({ setHeaderColor, landing }) => {
     observer.unobserve(landing);
   };
 };
+
+export const galleryAnimation = ({ gallery, wrap, columns }) => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: gallery,
+      scrub: true,
+      start: "top bottom",
+      end: "bottom top",
+    },
+  });
+
+  tl.addLabel("start", 0)
+    .to(
+      wrap,
+      {
+        ease: "none",
+        yPercent: (pos) => (pos % 2 ? 3 : -3),
+      },
+      "start"
+    )
+    .to(
+      columns,
+      {
+        ease: "none",
+        startAt: { scale: 1.2 },
+        scale: 1,
+      },
+      "start"
+    );
+};

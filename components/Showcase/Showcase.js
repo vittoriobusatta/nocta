@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { closeSlider, showSlider } from "./sliderUtils";
 import { AppContext } from "context";
 import Transition from "utils/transitions";
-import Link from "next/link";
 
 function shuffleArrayOnce(array) {
   const shuffledArray = [...array];

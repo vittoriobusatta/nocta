@@ -1,14 +1,14 @@
 import Image from "next/image";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { AppContext } from "context";
+import { galleryAnimation } from "utils/animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const image = Array.from({ length: 7 }, (_, i) => ({
   id: i + 1,
-  src: require(`@/public/images/gallery/g_0${i + 1}.jpg`),
+  src: require(`@/public/images/gallery/g_0${i + 1}.webp`),
   alt: `Image ${i + 1}`,
 }));
 
@@ -19,46 +19,13 @@ export default function Gallery() {
   const WrapRef = useRef([]);
   const columnsRef = useRef([]);
 
-  const { headerRef } = useContext(AppContext);
-
   useEffect(() => {
     const gallery = galleryRef.current;
     const wrap = WrapRef.current;
     const columns = columnsRef.current;
 
-    const scroll = () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: gallery,
-          scrub: true,
-          start: "top bottom",
-          end: "bottom top",
-        },
-      });
-
-      tl.addLabel("start", 0)
-        .to(
-          wrap,
-          {
-            ease: "none",
-            yPercent: (pos) => (pos % 2 ? 3 : -3),
-          },
-          "start"
-        )
-        .to(
-          columns,
-          {
-            ease: "none",
-            startAt: { scale: 1.2 },
-            scale: 1,
-          },
-          "start"
-        );
-    };
-
-    scroll();
+    galleryAnimation({ gallery, wrap, columns });
   }, []);
-
 
   return (
     <section ref={galleryRef} className="gallery">
