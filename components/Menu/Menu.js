@@ -1,6 +1,7 @@
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const images = [];
 
@@ -22,14 +23,63 @@ const menuItems = menuNames.map((name, index) => {
 
 function Menu({ menuIsOpen, setMenuIsOpen }) {
   const [currentItem, setCurrentItem] = useState(0);
+  const menuRef = useRef(null);
+  const itemsRef = useRef([]);
+  const imagesRef = useRef([]);
 
-  const handleMenu = (index) => {
+  const itemsClicks = (index) => {
     setCurrentItem(index);
-    setMenuIsOpen((prev) => !prev);
+    setMenuIsOpen(false);
   };
 
+  const animateMenu = () => {
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 0.5,
+        ease: "power3.inOut",
+      },
+    });
+
+    if (menuIsOpen) {
+      console.log("open");
+      tl
+        .to(menuRef.current, {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+        })
+        .fromTo(
+          itemsRef.current,
+          {
+            yPercent: 100,
+          },
+          {
+            yPercent: 0,
+            stagger: 0.1,
+          }
+        )
+        .fromTo(
+          imagesRef.current,
+          {
+            height: 0,
+          },
+          {
+            height: "auto",
+            stagger: 0.1,
+          }
+        ),
+        "-=0.8";
+    } else {
+      tl.to(menuRef.current, {
+        clipPath: "polygon(0 0, 0% 0, 0% 100%, 0% 100%)",
+      });
+    }
+  };
+
+  useEffect(() => {
+    animateMenu();
+  }, [menuIsOpen]);
+
   return (
-    <section className={`menu ${menuIsOpen ? "menu--open" : ""}`}>
+    <section className={`menu`} ref={menuRef}>
       <div className="menu__container">
         <ul className="menu__list">
           {menuItems.map((item, index) => {
@@ -40,10 +90,13 @@ function Menu({ menuIsOpen, setMenuIsOpen }) {
               <li
                 className={`menu__item ${isActive ? "menu__item--active" : ""}`}
                 key={id}
-                onClick={() => handleMenu(index)}
+                onClick={() => itemsClicks(index)}
               >
                 <div className="menu__item__row">
-                  <Link href={link}>
+                  <Link
+                    href={link}
+                    ref={(el) => (itemsRef.current[index] = el)}
+                  >
                     <h1 className="menu__item__link">{name}</h1>
                   </Link>
                   <Image
@@ -52,6 +105,7 @@ function Menu({ menuIsOpen, setMenuIsOpen }) {
                     width={imageHW}
                     height={imageHW}
                     className="menu__item__img"
+                    ref={(el) => (imagesRef.current[index] = el)}
                   />
                 </div>
               </li>

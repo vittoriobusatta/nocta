@@ -12,7 +12,7 @@
       inset: 20px auto auto $minGap;
     }
     & g {
-      transition: opacity 0.3s;
+      transition: opacity 0.5s;
       opacity: 0;
       &.header__logo--black {
         opacity: 1;

@@ -6,15 +6,6 @@
   width: 100%;
   z-index: 39;
   background-color: $color1;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s, clip-path 0.55s ease-in-out;
-  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-  &--open {
-    opacity: 1;
-    visibility: visible;
-    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-  }
   &__container {
     @include full_hw;
     @include fja_center;
@@ -48,6 +39,7 @@
       align-items: center;
       @include full_hw;
       flex-direction: column;
+      overflow: hidden;
       @media screen and (min-width: 992px) {
         flex-direction: row;
         column-gap: $columnSpace;
