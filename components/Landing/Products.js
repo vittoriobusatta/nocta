@@ -38,7 +38,7 @@ function Products() {
       threshold: 0.5,
     };
 
-    const products = productsRef.current;
+    const section = productsRef.current;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -55,6 +55,7 @@ function Products() {
           tl.to(linkRef.current, {
             yPercent: 0,
             ease: [0.33, 1, 0.68, 1],
+            delay: 0.2,
           }, "start");
           tl.to(items.current, {
             scale: 1,
@@ -66,10 +67,10 @@ function Products() {
       });
     }, options);
 
-    observer.observe(products);
+    observer.observe(section);
 
     return () => {
-      observer.unobserve(products);
+      observer.unobserve(section);
       observer.disconnect();
     };
   }, [tl]);

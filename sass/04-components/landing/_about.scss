@@ -166,6 +166,9 @@
         color: $titleColor;
       }
     }
+    & svg {
+      overflow: hidden;
+    }
   }
 }
 
