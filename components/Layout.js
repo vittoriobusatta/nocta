@@ -10,7 +10,7 @@ function Layout({ children }) {
   const { menuIsOpen, setMenuIsOpen } = useContext(AppContext);
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
       <Cursor />
       <Header />
       <main>{children}</main>

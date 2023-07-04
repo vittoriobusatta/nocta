@@ -82,16 +82,16 @@ function Cursor() {
   }, [cursorBig, cursorSmall]);
 
   return (
-    <div class="custom-cursor">
+    <div className="custom-cursor">
       <div
         id="cursor-big"
         ref={cursorBig}
-        class="custom-cursor__ball custom-cursor__ball--big"
+        className="custom-cursor__ball custom-cursor__ball--big"
       ></div>
       <div
         id="cursor-small"
         ref={cursorSmall}
-        class="custom-cursor__ball custom-cursor__ball--small"
+        className="custom-cursor__ball custom-cursor__ball--small"
       ></div>
     </div>
   );
