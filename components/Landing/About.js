@@ -20,6 +20,7 @@ function About() {
   const titlesRef = useRef([]);
   const aboutRef = useRef(null);
   const ctaRef = useRef(null);
+  const subtitleRef = useRef(null);
   const imagesRef = useRef([]);
 
   const tl = gsap.timeline({
@@ -33,11 +34,16 @@ function About() {
     const ctaArray = [
       ctaRef.current.children[0],
       ctaRef.current.children[1].children[0],
-    ]
+    ];
     const title = titlesRef.current;
     const images = imagesRef.current;
+    const subtitle = subtitleRef.current;
 
     tl.set(title, {
+      yPercent: 100,
+      ease: [0.33, 1, 0.68, 1],
+    });
+    tl.set(subtitle, {
       yPercent: 100,
       ease: [0.33, 1, 0.68, 1],
     });
@@ -61,23 +67,35 @@ function About() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          tl.to(subtitle, {
+            yPercent: 0,
+            ease: [0.33, 1, 0.68, 1],
+          });
           tl.to(title, {
             yPercent: 0,
             ease: [0.33, 1, 0.68, 1],
             stagger: 0.2,
           });
           tl.addLabel("start");
-          tl.to(ctaArray, {
-            yPercent: 0,
-            ease: [0.33, 1, 0.68, 1],
-            stagger: 0.2,
-          }, "start");
-          tl.to(images, {
-            height: "auto",
-            scale: 1,
-            ease: [0.33, 1, 0.68, 1],
-            stagger: 0.2,
-          }, "start");
+          tl.to(
+            ctaArray,
+            {
+              yPercent: 0,
+              ease: [0.33, 1, 0.68, 1],
+              stagger: 0.2,
+            },
+            "start"
+          );
+          tl.to(
+            images,
+            {
+              height: "auto",
+              scale: 1,
+              ease: [0.33, 1, 0.68, 1],
+              stagger: 0.2,
+            },
+            "start"
+          );
         }
       });
     }, options);
@@ -94,7 +112,11 @@ function About() {
     <section className="about" ref={aboutRef}>
       <div className="about__container">
         <div className="about__title">
-          <h2>About us</h2>
+          <h2>
+            <div className="hidden">
+              <p ref={subtitleRef}>About us</p>
+            </div>
+          </h2>
           <h1>
             {titleTexts.map((text, index) => (
               <div className="hidden" key={index}>
