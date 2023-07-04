@@ -19,7 +19,7 @@ function About() {
       <div className="about__container">
         <div className="about__title">
           <h2>About us</h2>
-          <h1>
+          <h1 className="hidden">
             <span>A collection for</span>
             <span>the collective</span>
           </h1>

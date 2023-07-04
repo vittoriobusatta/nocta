@@ -40,7 +40,7 @@
       display: inline-flex;
       align-items: center;
       column-gap: 1vw;
-      & p {
+      & a {
         @include paragraph_properties;
         font-size: $ParagraphSize;
         text-align: center;

@@ -1,29 +1,96 @@
+import { gsap } from "gsap";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Arrow, Viewfinder } from "utils/icons";
 
 function Products() {
   const [data, setData] = useState([]);
+  const productsRef = useRef(null);
+  const titleref = useRef(null);
+  const linkRef = useRef(null);
+  const items = useRef([]);
+
   useEffect(() => {
     fetch("/products.json")
       .then((response) => response.json())
       .then((resdata) => setData(resdata))
       .catch((error) => console.log(error));
   }, []);
+
+  const tl = gsap.timeline({
+    defaults: {
+      duration: 0.5,
+      ease: "power3.inOut",
+    },
+  });
+
+  useEffect(() => {
+    tl.set(titleref.current, { yPercent: 100, ease: [0.33, 1, 0.68, 1] });
+    tl.set(linkRef.current, { yPercent: 100, ease: [0.33, 1, 0.68, 1] });
+    tl.set(items.current, {
+      scale: 0.95,
+      ease: [0.33, 1, 0.68, 1],
+    });
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const products = productsRef.current;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tl.addLabel("start");
+          tl.to(
+            titleref.current,
+            {
+              yPercent: 0,
+              ease: [0.33, 1, 0.68, 1],
+            },
+            "start"
+          );
+          tl.to(linkRef.current, {
+            yPercent: 0,
+            ease: [0.33, 1, 0.68, 1],
+          }, "start");
+          tl.addLabel("end");
+          tl.to(items.current, {
+            scale: 1,
+            ease: [0.33, 1, 0.68, 1],
+            stagger: 0.05,
+            delay: 0.2,
+          }, "end");
+        }
+      });
+    }, options);
+
+    observer.observe(products);
+
+    return () => {
+      observer.unobserve(products);
+      observer.disconnect();
+    };
+  }, [tl]);
+
   return (
-    <section className="products">
+    <section className="products" ref={productsRef}>
       <div className="products__content">
         <div className="products__head">
           <div
-            className="products__head__title"
+            className="products__head__title hidden"
             data-title-length={data.length}
           >
-            <h1>All Products</h1>
+            <h1 ref={titleref}>All Products</h1>
           </div>
-          <Link href="/products" className="products__head__link">
-            <p>View All</p>
-            <Arrow />
-          </Link>
+          <div className="products__head__link hidden">
+            <Link href="/products" ref={linkRef}>
+              View All
+            </Link>
+            {/* <Arrow /> */}
+          </div>
         </div>
         <div className="products__list">
           {data.slice(0, 4).map((item) => {
@@ -31,18 +98,19 @@ function Products() {
             return (
               <div className="products__item" key={id}>
                 {/* <Link href={`/products/${src}`}> */}
-                  <div className="products__item__content">
-                    <div
-                      className="products__item__image"
-                      style={{
-                        backgroundImage: `url(/images/products/${src}.png)`,
-                      }}
-                    />
-                  </div>
-                  <div className="products__item__details">
-                    <h3>{name}</h3>
-                    <Viewfinder />
-                  </div>
+                <div className="products__item__content">
+                  <div
+                    className="products__item__image"
+                    style={{
+                      backgroundImage: `url(/images/products/${src}.png)`,
+                    }}
+                    ref={(el) => (items.current[id] = el)}
+                  />
+                </div>
+                <div className="products__item__details">
+                  <h3>{name}</h3>
+                  <Viewfinder />
+                </div>
                 {/* </Link> */}
               </div>
             );
