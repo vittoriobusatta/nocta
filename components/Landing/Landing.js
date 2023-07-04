@@ -18,19 +18,19 @@ function Landing() {
     setIsLoadingComplete,
   } = useContext(AppContext);
 
-  useEffect(() => {
-    if (!isLoadingComplete) return;
-    landingAnimation({
-      itemRef,
-      itemRefInner,
-      setIsLoadingComplete,
-    });
+  // useEffect(() => {
+  //   if (!isLoadingComplete) return;
+  //   landingAnimation({
+  //     itemRef,
+  //     itemRefInner,
+  //     setIsLoadingComplete,
+  //   });
 
-    return () => {
-      gsap.killTweensOf(itemRef.current);
-      gsap.killTweensOf(itemRefInner.current.children[0]);
-    };
-  }, [isLoadingComplete]);
+  //   return () => {
+  //     gsap.killTweensOf(itemRef.current);
+  //     gsap.killTweensOf(itemRefInner.current.children[0]);
+  //   };
+  // }, [isLoadingComplete]);
 
   useEffect(() => {
     if (menuIsOpen) return;
